@@ -18,7 +18,7 @@ OpenGL ES programming on Android in a native format.  Try to follow. Any feedbac
 Getting simple things sorted first.
 
 	
-	# To initiate the project:
+	# To initiate the project from command line:
 
 	android create project --target android-8 --name Example01 --path . --activity Example01 --package org.nzdis 
 
@@ -27,4 +27,7 @@ Getting simple things sorted first.
 
 	ant debug 
 	adb -d install -r bin/Example01-debug.apk
+
+
+This project contains the skeleton of the OpenGL app, that does nothing. A perfect starting point ;)
 
