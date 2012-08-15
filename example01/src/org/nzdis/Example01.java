@@ -7,6 +7,11 @@ import android.opengl.GLSurfaceView;
 import android.view.Window;
 import android.view.WindowManager;
 
+/**
+ * Simple example demonstrating OpenGL surface view.
+ * 
+ * @author mariusz
+ */
 public class Example01 extends Activity {
 
 	private ExampleView surfaceView;

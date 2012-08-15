@@ -6,7 +6,11 @@ import android.opengl.GLSurfaceView;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-
+/**
+ * Simple demo and use of Java-based OpenGL surface view.
+ * 
+ * @author mariusz
+ */
 public class ExampleView extends GLSurfaceView {
   private ExampleRenderer renderer;
 
