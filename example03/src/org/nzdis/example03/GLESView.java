@@ -1,7 +1,6 @@
 package org.nzdis.example03;
 
 import android.content.Context;
-import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -11,10 +10,10 @@ import javax.microedition.khronos.opengles.GL10;
  * 
  * @author mariusz
  */
-public class ExampleView extends GLSurfaceView {
+public class GLESView extends GLSurfaceView {
   private ExampleRenderer renderer;
 
-  public ExampleView(Context context) {
+  public GLESView(Context context) {
 	super(context);
   	setEGLContextClientVersion(2);
     renderer = new ExampleRenderer();
