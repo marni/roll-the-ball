@@ -14,7 +14,7 @@ import android.view.WindowManager;
  */
 public class Example01 extends Activity {
 
-	private ExampleView surfaceView;
+	private JavaGLESView surfaceView;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class Example01 extends Activity {
     	setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     	getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-    	surfaceView = new ExampleView(this);
+    	surfaceView = new JavaGLESView(this);
     	setContentView(surfaceView);
     }
 
