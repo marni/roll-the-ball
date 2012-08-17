@@ -1,7 +1,7 @@
 
 #include <string.h>
 #include <jni.h>
-#include <gles/gl.h>
+#include <GLES/gl.h>
 #include "simple.h"
 
 

@@ -3,7 +3,7 @@
 // Quick Note:	OpenGL Terrain Generation Sample
 
 
-#include <gles/gl.h>
+#include <GLES/gl.h>
 #include "terrain.h"
 
 ////// Global Variables
