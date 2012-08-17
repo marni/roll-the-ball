@@ -47,7 +47,7 @@ void CleanUp()
 
 // Initialize
 // desc: initializes OpenGL
-void Initialize()
+void Initialize(float width, float height)
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);		// clear to black
 
@@ -68,7 +68,7 @@ void Initialize()
 	glMatrixMode(GL_PROJECTION);		   // set projection matrix current matrix
 	glLoadIdentity();					      // reset projection matrix
 	// calculate aspect ratio of window
-	gluPerspective(54.0f,(GLfloat)width/(GLfloat)height,1.0f,1000.0f);
+	//gluPerspective(54.0f,(GLfloat)width/(GLfloat)height,1.0f,1000.0f);
 	glMatrixMode(GL_MODELVIEW);			// set modelview matrix
 	glLoadIdentity();					      // reset modelview matrix
 }
@@ -95,7 +95,7 @@ void Render()
 	glLoadIdentity();
 
 	// set the camera position
-	gluLookAt(cameraX, cameraY, cameraZ, lookX, lookY, lookZ, 0.0, 1.0, 0.0);
+	// gluLookAt(cameraX, cameraY, cameraZ, lookX, lookY, lookZ, 0.0, 1.0, 0.0);
 
 	// set the current texture to the land texture
 	glBindTexture(GL_TEXTURE_2D, land);
@@ -103,13 +103,13 @@ void Render()
 	// we are going to loop through all of our terrain's data points,
 	// but we only want to draw one triangle strip for each set along the x-axis.
 	for (int z = 0; z < MAP_Z-1; z++)
-	{
+	{/*
 		glBegin(GL_TRIANGLE_STRIP);
 		for (int x = 0; x < MAP_X-1; x++)
 		{
 			// for each vertex, we calculate the grayscale shade color, 
 			// we set the texture coordinate, and we draw the vertex.
-			/*
+			/
 			   the vertices are drawn in this order:
 
 			   0  ---> 1
@@ -117,7 +117,7 @@ void Render()
 				    /
 			     |/
 			   2  ---> 3
-			*/
+			/
 		
 			// draw vertex 0
 			glColor3f(terrain[x][z][1]/255.0f, terrain[x][z][1]/255.0f, terrain[x][z][1]/255.0f);
@@ -140,6 +140,7 @@ void Render()
 			glVertex3f(terrain[x+1][z+1][0], terrain[x+1][z+1][1], terrain[x+1][z+1][2]);
 		}
 		glEnd();
+		*/
 	}
 	// enable blending
 	glEnable(GL_BLEND);
