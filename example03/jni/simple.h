@@ -12,7 +12,7 @@ extern "C" {
  * Method:    myDrawFrame
  * Signature: ()V
  */
-JNIEXPORT void JNICALL Java_org_nzdis_example03_ExampleView_myDrawFrame
+JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_myDrawFrame
   (JNIEnv *, jclass);
 
 /*
@@ -20,7 +20,7 @@ JNIEXPORT void JNICALL Java_org_nzdis_example03_ExampleView_myDrawFrame
  * Method:    mySurfaceChanged
  * Signature: (II)V
  */
-JNIEXPORT void JNICALL Java_org_nzdis_example03_ExampleView_mySurfaceChanged
+JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_mySurfaceChanged
   (JNIEnv *, jclass, jint, jint);
 
 /*
@@ -28,7 +28,7 @@ JNIEXPORT void JNICALL Java_org_nzdis_example03_ExampleView_mySurfaceChanged
  * Method:    mySurfaceCreated
  * Signature: ()V
  */
-JNIEXPORT void JNICALL Java_org_nzdis_example03_ExampleView_mySurfaceCreated
+JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_mySurfaceCreated
   (JNIEnv *, jclass);
 
 #ifdef __cplusplus
