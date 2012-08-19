@@ -7,7 +7,7 @@
 
 
 
-static string vShaderStr =
+static char vShaderStr[] =
           "attribute vec4 a_position;    \n"
           "attribute vec4 a_color;       \n"
           "varying vec4 v_color;         \n"
@@ -17,7 +17,7 @@ static string vShaderStr =
           "   gl_Position = a_position;  \n"
           "}                             \n";
 
-static string fShaderStr =
+static char fShaderStr[] =
         "#ifdef GL_ES                  \n"
         "precision highp float;        \n"
         "#endif                        \n"
@@ -75,8 +75,8 @@ void Terrain::Initialize(float width, float height)
 	GLuint fragmentShader;
 	GLint linked;
 
-	vertexShader = Util::LoadShader(GL_VERTEX_SHADER, vShaderStr);
-	fragmentShader = Util::LoadShader(GL_FRAGMENT_SHADER, fShaderStr);
+	vertexShader = esLoadShader(GL_VERTEX_SHADER, vShaderStr);
+	fragmentShader = esLoadShader(GL_FRAGMENT_SHADER, fShaderStr);
 
 	 __programObject = glCreateProgram();
 

@@ -1,19 +1,21 @@
 
-#include <string.h>
 #include <jni.h>
-#include <GLES/gl.h>
+#include <GLES2/gl2.h>
 #include "simple.h"
+#include "Origin.h"
 #include "Terrain.h"
 
 
-Terrain *terrain;
+//Terrain *terrain;
+Origin *origin;
 
 
 JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_myDrawFrame
   (JNIEnv *env, jclass c)
 {
-	//glClear(GL_COLOR_BUFFER_BIT);
-	terrain->Render();
+	glClear(GL_COLOR_BUFFER_BIT);
+	origin->drawFrame();
+	LOGI("draing frame now");
 }
 
 
@@ -28,6 +30,8 @@ JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_mySurfaceChanged
 JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_mySurfaceCreated
 (JNIEnv *env, jclass c)
 {
-	glClearColor(1.0f, 1.0f, 0.0f, 1.0f);
-	terrain = new Terrain(); // FIXME: clean up the memory when the surface is discarded
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	origin = new Origin();
+	origin->init();
+	//terrain = new Terrain(); // FIXME: clean up the memory when the surface is discarded
 }

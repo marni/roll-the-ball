@@ -18,7 +18,6 @@ using namespace std;
 #define MAP_Z	32
 #define MAP_SCALE	20.0f
 
-#define PI 3.14159265
 
 
 class Terrain

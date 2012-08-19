@@ -2,8 +2,8 @@
 #include <jni.h>
 /* Header for class org_nzdis_example02_ExampleView */
 
-#ifndef _Included_org_nzdis_example02_ExampleView
-#define _Included_org_nzdis_example02_ExampleView
+#ifndef _Included_org_nzdis_example03_ExampleView
+#define _Included_org_nzdis_example03_ExampleView
 #ifdef __cplusplus
 extern "C" {
 #endif

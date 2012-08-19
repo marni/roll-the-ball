@@ -14,36 +14,54 @@ import javax.microedition.khronos.opengles.GL10;
  * @author mariusz
  */
 public class NativeGLESView extends GLSurfaceView {
-  private ExampleRenderer renderer;
-
-  public NativeGLESView(Context context) {
-	super(context);
-  	setEGLContextClientVersion(2);
-    renderer = new ExampleRenderer();
-    setRenderer(renderer);
-  }
+  
+	private ExampleRenderer renderer;
 
 	static {
 		System.loadLibrary("simple");
 	}
+
 	public static native void myDrawFrame();
 	public static native void mySurfaceChanged(int width, int height);
 	public static native void mySurfaceCreated();
- 
-  private static class ExampleRenderer implements GLSurfaceView.Renderer {
-    @Override
-    public void onDrawFrame(GL10 unused) {
-    	myDrawFrame();
-    }
 
-    @Override
-    public void onSurfaceChanged(GL10 unused, int width, int height) {
-    	mySurfaceChanged(width, height);
-    }
+  
+	
+	public NativeGLESView(Context context) {
+		super(context);
+		setEGLContextClientVersion(2);
+		renderer = new ExampleRenderer();
+		setRenderer(renderer);
+	}
 
-    @Override
-    public void onSurfaceCreated(GL10 unused, EGLConfig config) {
-    	mySurfaceCreated();
-    }
-  }
+	
+	@Override
+	public void onPause() {
+		super.onPause();
+		// FIXME cleanup the allocated memory
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		// FIXME check if onSurfaceChanged or onSurfaceCreated is being called
+	}
+	
+	
+	private static class ExampleRenderer implements GLSurfaceView.Renderer {
+		@Override
+		public void onDrawFrame(GL10 unused) {
+			myDrawFrame();
+		}
+
+		@Override
+		public void onSurfaceChanged(GL10 unused, int width, int height) {
+			mySurfaceChanged(width, height);
+		}
+
+		@Override
+		public void onSurfaceCreated(GL10 unused, EGLConfig config) {
+			mySurfaceCreated();
+		}
+	}
 }
