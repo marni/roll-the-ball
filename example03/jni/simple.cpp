@@ -15,7 +15,6 @@ JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_myDrawFrame
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 	origin->drawFrame();
-	LOGI("draing frame now");
 }
 
 
