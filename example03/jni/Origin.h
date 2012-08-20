@@ -8,16 +8,19 @@
 #ifndef ORIGIN_H_
 #define ORIGIN_H_
 
+#include "esUtil.h"
 #include "Util.h"
 
 class Origin {
 
 private:
-	GLuint programObject;
+	ESContext esContext;
+	UserData  userData;
 
 public:
 	Origin();
 	virtual ~Origin();
+	void cleanup();
 
 	int init();
 	void drawFrame();
