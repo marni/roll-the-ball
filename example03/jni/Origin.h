@@ -9,7 +9,6 @@
 #define ORIGIN_H_
 
 #include "esUtil.h"
-#include "Util.h"
 
 class Origin {
 
@@ -22,7 +21,7 @@ public:
 	virtual ~Origin();
 	void cleanup();
 
-	int init();
+	int init(float, float);
 	void drawFrame();
 };
 

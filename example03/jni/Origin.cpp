@@ -29,7 +29,7 @@ Origin::~Origin() {
 ///
 // Initialize the shader and program object
 //
-int Origin::init()
+int Origin::init(float width, float height)
 {
    char vShaderStr[] =
       "attribute vec4 a_position;                  \n"
@@ -51,31 +51,44 @@ int Origin::init()
 //    "  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);        \n"
       "}                                           \n";
 
+   // show what we have under the bonet
+   printGLString("Version", GL_VERSION);
+   printGLString("Vendor", GL_VENDOR);
+   printGLString("Renderer", GL_RENDERER);
+   printGLString("Extensions", GL_EXTENSIONS);
+
+   esContext.width = width;
+   esContext.height = height;
+
    UserData *userData = (UserData*)esContext.userData;
    // Load the shaders and get a linked program object
    userData->programObject = esCreateProgram(vShaderStr, fShaderStr);
 
    // Get the attribute locations
-   userData->positionLoc = glGetAttribLocation ( userData->programObject, "a_position" );
+   userData->positionLoc = glGetAttribLocation(userData->programObject, "a_position");
+   userData->colorLoc = glGetAttribLocation(userData->programObject, "a_color");
 
    // Get the uniform locations
-   userData->mvpLoc = glGetUniformLocation( userData->programObject, "mvp_matrix" );
+   userData->mvpLoc = glGetUniformLocation(userData->programObject, "mvp_matrix");
 
    // Generate the vertex data
-   userData->numIndices = esGenCube( 1.0, &userData->vertices,
-                                        NULL, NULL, &userData->indices );
+   userData->numIndices = esGenCube(1.0, &userData->vertices,
+                                      NULL, NULL, &userData->indices);
 
    // Starting rotation angle for the cube
-   userData->angle = 45.0f;
+   userData->angle = 40.0f;
 
-   glClearColor ( 0.0f, 0.0f, 0.0f, 1.0f );
+   glClearColor ( 0.0f, 0.0f, 0.0f, 0.0f );
 
    return GL_TRUE;
 }
 
 void Origin::drawFrame()
 {
-
+	ESMatrix perspective;
+	ESMatrix modelview;
+	float    aspect;
+/*
 	GLfloat vVertices[] = {
 			0.0f, 0.0f, 0.0f,
 			0.5f, 0.0f, 0.0f,
@@ -90,11 +103,82 @@ void Origin::drawFrame()
 				0.5f, 0.0f, 0.0f, 1.0f,
 				0.5f, 0.0f, 0.0f, 1.0f,
 				0.0f, 0.0f, 0.5f, 1.0f,
-				0.0f, 0.0f, 0.5f, 1.0f};
+				0.0f, 0.0f, 0.5f, 1.0f,
+				0.0f, 0.5f, 0.0f, 1.0f}; */
+	GLfloat vColors[] = {
+				0.0f, 0.5f, 0.0f, 1.0f,
+				0.0f, 0.5f, 0.0f, 1.0f,
+				0.0f, 0.5f, 0.0f, 1.0f,
+				0.0f, 0.5f, 0.0f, 1.0f,
+				0.0f, 0.5f, 0.0f, 1.0f,
+				0.0f, 0.5f, 0.0f, 1.0f,
+
+				0.5f, 0.0f, 0.0f, 1.0f,
+				0.5f, 0.0f, 0.0f, 1.0f,
+				0.5f, 0.0f, 0.0f, 1.0f,
+				0.5f, 0.0f, 0.0f, 1.0f,
+				0.5f, 0.0f, 0.0f, 1.0f,
+				0.5f, 0.0f, 0.0f, 1.0f,
+				0.0f, 0.0f, 0.5f, 1.0f,
+				0.0f, 0.0f, 0.5f, 1.0f,
+				0.0f, 0.0f, 0.5f, 1.0f,
+				0.0f, 0.0f, 0.5f, 1.0f,
+				0.0f, 0.0f, 0.5f, 1.0f,
+				0.0f, 0.0f, 0.5f, 1.0f,
+
+				0.0f, 0.5f, 0.0f, 1.0f,
+				0.0f, 0.5f, 0.0f, 1.0f,
+				0.0f, 0.5f, 0.0f, 1.0f,
+				0.0f, 0.5f, 0.0f, 1.0f,
+				0.0f, 0.5f, 0.0f, 1.0f,
+				0.0f, 0.5f, 0.0f, 1.0f,
+
+				0.0f, 0.5f, 0.0f, 1.0f,
+				0.0f, 0.5f, 0.0f, 1.0f,
+				0.0f, 0.5f, 0.0f, 1.0f,
+				0.5f, 0.0f, 0.0f, 1.0f,
+				0.5f, 0.0f, 0.0f, 1.0f,
+				0.5f, 0.0f, 0.0f, 1.0f,
+				0.0f, 0.0f, 0.5f, 1.0f,
+				0.0f, 0.0f, 0.5f, 1.0f,
+				0.0f, 0.0f, 0.5f, 1.0f,
+				0.0f, 0.5f, 0.0f, 1.0f,
+				0.0f, 0.5f, 0.0f, 1.0f,
+				0.0f, 0.5f, 0.0f, 1.0f
+	};
 
 	UserData *userData = (UserData*)esContext.userData;
 	// clear the color buffer
+	glViewport(0, 0, esContext.width, esContext.height);
 	glClear(GL_COLOR_BUFFER_BIT);
+
+	   // Compute a rotation angle based on time to rotate the cube
+	   userData->angle += 1.0f;
+	   if( userData->angle >= 360.0f )
+	      userData->angle -= 360.0f;
+
+
+	   // Compute the window aspect ratio
+	   aspect = esContext.width / esContext.height;
+
+	   // Generate a perspective matrix with a 60 degree FOV
+	   esMatrixLoadIdentity(&perspective);
+	   esPerspective(&perspective, 60.0f, aspect, 1.0f, 20.0f);
+
+	   // Generate a model view matrix to rotate/translate the cube
+	   esMatrixLoadIdentity(&modelview);
+
+	   // Translate away from the viewer
+	   esTranslate(&modelview, 0.0, 0.0, -4.0);
+
+	   // Rotate the cube
+	   esRotate(&modelview, userData->angle, 1.0, 0.0, 1.0);
+
+	   // Compute the final MVP by multiplying the
+	   // modevleiw and perspective matrices together
+	   esMatrixMultiply(&userData->mvpMatrix, &modelview, &perspective);
+
+
 	// use the program object
 	glUseProgram(userData->programObject);
 	// Load the vertex position
@@ -103,7 +187,7 @@ void Origin::drawFrame()
 	                           userData->vertices);
 	glEnableVertexAttribArray(userData->positionLoc);
 	// load colors
-	glVertexAttribPointer(userData->colorLoc, 4, GL_FLOAT, GL_FALSE, 0, vColors);
+	glVertexAttribPointer(userData->colorLoc, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), vColors);
 	glEnableVertexAttribArray(userData->colorLoc);
 	// Load the MVP matrix
 	glUniformMatrix4fv(userData->mvpLoc, 1, GL_FALSE,

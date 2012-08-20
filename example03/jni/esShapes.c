@@ -256,7 +256,7 @@ int ESUTIL_API esGenCube ( float scale, GLfloat **vertices, GLfloat **normals,
    // Generate the indices
    if ( indices != NULL )
    {
-      GLuint cubeIndices[] =
+      GLushort cubeIndices[] =
       {
          0, 2, 1,
          0, 3, 2, 

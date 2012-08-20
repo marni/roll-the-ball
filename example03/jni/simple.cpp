@@ -22,7 +22,7 @@ JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_mySurfaceChanged
 (JNIEnv *env, jclass c, jint width, jint height)
 {
 	glViewport(0, 0, width, height);
-
+	origin->init(width, height);
 }
 
 
@@ -31,6 +31,5 @@ JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_mySurfaceCreated
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	origin = new Origin();
-	origin->init();
 	//terrain = new Terrain(); // FIXME: clean up the memory when the surface is discarded
 }
