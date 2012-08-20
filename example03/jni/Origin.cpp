@@ -47,8 +47,8 @@ int Origin::init(float width, float height)
 	  "varying vec4 color;                         \n"
       "void main()                                 \n"
       "{                                           \n"
-      "  gl_FragColor = color;                     \n"
-//    "  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);        \n"
+//      "  gl_FragColor = color;                     \n"
+    "  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);        \n"
       "}                                           \n";
 
    // show what we have under the bonet
@@ -72,9 +72,11 @@ int Origin::init(float width, float height)
    userData->mvpLoc = glGetUniformLocation(userData->programObject, "mvp_matrix");
 
    // Generate the vertex data
-   userData->numIndices = esGenCube(1.0, &userData->vertices,
+   /*userData->numIndices = esGenCube(1.0, &userData->vertices,
                                       NULL, NULL, &userData->indices);
-
+*/
+   userData->numIndices = esGenSphere(40, 1.0f, &userData->vertices,
+                                         NULL, NULL, &userData->indices);
    // Starting rotation angle for the cube
    userData->angle = 40.0f;
 
@@ -193,8 +195,13 @@ void Origin::drawFrame()
 	glUniformMatrix4fv(userData->mvpLoc, 1, GL_FALSE,
 						(GLfloat*) &userData->mvpMatrix.m[0][0]);
 	// Draw the cube
-	glDrawElements(GL_TRIANGLES, userData->numIndices, GL_UNSIGNED_SHORT,
+	/*glDrawElements(GL_TRIANGLES, userData->numIndices, GL_UNSIGNED_SHORT,
 						userData->indices);
+	*/
+
+	// Draw a sphere
+	glDrawElements(GL_TRIANGLE_STRIP, userData->numIndices, GL_UNSIGNED_INT,
+							userData->indices);
 	/*
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
 	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, vColors);
