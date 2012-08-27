@@ -13,6 +13,7 @@
 #include <GLES2/gl2.h>
 #include <GLES2/gl2ext.h>
 
+#include "Drawable.h"
 #include "Origin.h"
 
 
@@ -29,26 +30,26 @@ Origin::~Origin() {
 ///
 // Initialize the shader and program object
 //
-int Origin::init(float width, float height)
+void Origin::init(float width, float height)
 {
-   char vShaderStr[] =
-      "attribute vec4 a_position;                  \n"
-	  "attribute vec4 a_color;                     \n"
-	  "uniform mat4 mvp_matrix;                    \n"
+	Drawable::init(width, height);
+	char vShaderStr[] =
+      "attribute vec4 av4_position;                \n"
+	  "attribute vec4 av4_color;                   \n"
+	  "uniform mat4 um4_mvp; 	                   \n"
       "varying vec4 color;                         \n"
       "void main()                                 \n"
       "{                                           \n"
-      "   gl_Position = mvp_matrix * a_position;   \n"
-	  "   color = a_color;                         \n"
+      "   gl_Position = um4_mvp * av4_position;    \n"
+	  "   color = av4_color;                       \n"
       "}                                           \n";
 
-   char fShaderStr[] =
+	char fShaderStr[] =
       "precision mediump float;                    \n"
 	  "varying vec4 color;                         \n"
       "void main()                                 \n"
       "{                                           \n"
-//      "  gl_FragColor = color;                     \n"
-    "  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);        \n"
+      "  gl_FragColor = color;                     \n"
       "}                                           \n";
 
    // show what we have under the bonet
@@ -57,171 +58,81 @@ int Origin::init(float width, float height)
    printGLString("Renderer", GL_RENDERER);
    printGLString("Extensions", GL_EXTENSIONS);
 
-   esContext.width = width;
-   esContext.height = height;
-
-   UserData *userData = (UserData*)esContext.userData;
    // Load the shaders and get a linked program object
-   userData->programObject = esCreateProgram(vShaderStr, fShaderStr);
+   userData.programObject = esCreateProgram(vShaderStr, fShaderStr);
 
    // Get the attribute locations
-   userData->positionLoc = glGetAttribLocation(userData->programObject, "a_position");
-   userData->colorLoc = glGetAttribLocation(userData->programObject, "a_color");
+   userData.positionLoc = glGetAttribLocation(userData.programObject, "av4_position");
+   userData.colorLoc = glGetAttribLocation(userData.programObject, "av4_color");
 
    // Get the uniform locations
-   userData->mvpLoc = glGetUniformLocation(userData->programObject, "mvp_matrix");
-
-   // Generate the vertex data
-   /*userData->numIndices = esGenCube(1.0, &userData->vertices,
-                                      NULL, NULL, &userData->indices);
-*/
-   userData->numIndices = esGenSphere(40, 1.0f, &userData->vertices,
-                                         NULL, NULL, &userData->indices);
-   // Starting rotation angle for the cube
-   userData->angle = 40.0f;
-
-   glClearColor ( 0.0f, 0.0f, 0.0f, 0.0f );
-
-   return GL_TRUE;
+   userData.mvpLoc = glGetUniformLocation(userData.programObject, "um4_mvp");
+   glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 }
 
-void Origin::drawFrame()
-{
+void Origin::drawFrame() {
+	float aspect;
 	ESMatrix perspective;
 	ESMatrix modelview;
-	float    aspect;
-/*
 	GLfloat vVertices[] = {
 			0.0f, 0.0f, 0.0f,
 			0.5f, 0.0f, 0.0f,
-			0.0f, 0.0f, 0.0f,
+			0.0f, 0.0f,	0.0f,
 			0.0f, 0.5f, 0.0f,
 			0.0f, 0.0f, 0.0f,
-			0.0f, 0.0f, 0.5f};
-
-	GLfloat vColors[] = {
-				0.0f, 0.5f, 0.0f, 1.0f,
-				0.0f, 0.5f, 0.0f, 1.0f,
-				0.5f, 0.0f, 0.0f, 1.0f,
-				0.5f, 0.0f, 0.0f, 1.0f,
-				0.0f, 0.0f, 0.5f, 1.0f,
-				0.0f, 0.0f, 0.5f, 1.0f,
-				0.0f, 0.5f, 0.0f, 1.0f}; */
-	GLfloat vColors[] = {
-				0.0f, 0.5f, 0.0f, 1.0f,
-				0.0f, 0.5f, 0.0f, 1.0f,
-				0.0f, 0.5f, 0.0f, 1.0f,
-				0.0f, 0.5f, 0.0f, 1.0f,
-				0.0f, 0.5f, 0.0f, 1.0f,
-				0.0f, 0.5f, 0.0f, 1.0f,
-
-				0.5f, 0.0f, 0.0f, 1.0f,
-				0.5f, 0.0f, 0.0f, 1.0f,
-				0.5f, 0.0f, 0.0f, 1.0f,
-				0.5f, 0.0f, 0.0f, 1.0f,
-				0.5f, 0.0f, 0.0f, 1.0f,
-				0.5f, 0.0f, 0.0f, 1.0f,
-				0.0f, 0.0f, 0.5f, 1.0f,
-				0.0f, 0.0f, 0.5f, 1.0f,
-				0.0f, 0.0f, 0.5f, 1.0f,
-				0.0f, 0.0f, 0.5f, 1.0f,
-				0.0f, 0.0f, 0.5f, 1.0f,
-				0.0f, 0.0f, 0.5f, 1.0f,
-
-				0.0f, 0.5f, 0.0f, 1.0f,
-				0.0f, 0.5f, 0.0f, 1.0f,
-				0.0f, 0.5f, 0.0f, 1.0f,
-				0.0f, 0.5f, 0.0f, 1.0f,
-				0.0f, 0.5f, 0.0f, 1.0f,
-				0.0f, 0.5f, 0.0f, 1.0f,
-
-				0.0f, 0.5f, 0.0f, 1.0f,
-				0.0f, 0.5f, 0.0f, 1.0f,
-				0.0f, 0.5f, 0.0f, 1.0f,
-				0.5f, 0.0f, 0.0f, 1.0f,
-				0.5f, 0.0f, 0.0f, 1.0f,
-				0.5f, 0.0f, 0.0f, 1.0f,
-				0.0f, 0.0f, 0.5f, 1.0f,
-				0.0f, 0.0f, 0.5f, 1.0f,
-				0.0f, 0.0f, 0.5f, 1.0f,
-				0.0f, 0.5f, 0.0f, 1.0f,
-				0.0f, 0.5f, 0.0f, 1.0f,
-				0.0f, 0.5f, 0.0f, 1.0f
+			0.0f, 0.0f, 0.5f
 	};
 
-	UserData *userData = (UserData*)esContext.userData;
+	GLfloat vColors[] = {
+			0.0f, 0.8f, 0.0f, 1.0f,
+			0.0f, 0.8f,	0.0f, 1.0f,
+			0.8f, 0.0f, 0.0f, 1.0f,
+			0.8f, 0.0f, 0.0f, 1.0f,
+			0.8f, 0.8f, 0.0f, 1.0f,
+			0.8f, 0.8f, 0.0f, 1.0f
+	};
+
 	// clear the color buffer
 	glViewport(0, 0, esContext.width, esContext.height);
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	   // Compute a rotation angle based on time to rotate the cube
-	   userData->angle += 1.0f;
-	   if( userData->angle >= 360.0f )
-	      userData->angle -= 360.0f;
+	// Compute the window aspect ratio
+	aspect = esContext.width / esContext.height;
 
-
-	   // Compute the window aspect ratio
-	   aspect = esContext.width / esContext.height;
-
-	   // Generate a perspective matrix with a 60 degree FOV
+	// Generate a perspective matrix with a 60 degree FOV
 	   esMatrixLoadIdentity(&perspective);
-	   esPerspective(&perspective, 60.0f, aspect, 1.0f, 20.0f);
+	   esPerspective(&perspective, 60.0f, aspect, 0.0f, 10.0f);
 
 	   // Generate a model view matrix to rotate/translate the cube
 	   esMatrixLoadIdentity(&modelview);
 
 	   // Translate away from the viewer
-	   esTranslate(&modelview, 0.0, 0.0, -4.0);
+	   esTranslate(&modelview, 0.0, 0.0, 0.0);
 
+	   userData.angle = 45.0f;
 	   // Rotate the cube
-	   esRotate(&modelview, userData->angle, 1.0, 0.0, 1.0);
+	   esRotate(&modelview, userData.angle, 1.0, 1.0, 0.0);
 
 	   // Compute the final MVP by multiplying the
 	   // modevleiw and perspective matrices together
-	   esMatrixMultiply(&userData->mvpMatrix, &modelview, &perspective);
-
+	   esMatrixMultiply(&userData.mvpMatrix, &modelview, &perspective);
 
 	// use the program object
-	glUseProgram(userData->programObject);
+	glUseProgram(userData.programObject);
 	// Load the vertex position
-	glVertexAttribPointer(userData->positionLoc, 3, GL_FLOAT,
-	                           GL_FALSE, 3 * sizeof(GLfloat),
-	                           userData->vertices);
-	glEnableVertexAttribArray(userData->positionLoc);
+	glVertexAttribPointer(userData.positionLoc, 3, GL_FLOAT, GL_FALSE,
+			3 * sizeof(GLfloat), vVertices);
+	glEnableVertexAttribArray(userData.positionLoc);
 	// load colors
-	glVertexAttribPointer(userData->colorLoc, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), vColors);
-	glEnableVertexAttribArray(userData->colorLoc);
+	glVertexAttribPointer(userData.colorLoc, 4, GL_FLOAT, GL_FALSE,
+			4 * sizeof(GLfloat), vColors);
+	glEnableVertexAttribArray(userData.colorLoc);
+
 	// Load the MVP matrix
-	glUniformMatrix4fv(userData->mvpLoc, 1, GL_FALSE,
-						(GLfloat*) &userData->mvpMatrix.m[0][0]);
-	// Draw the cube
-	/*glDrawElements(GL_TRIANGLES, userData->numIndices, GL_UNSIGNED_SHORT,
-						userData->indices);
-	*/
+	glUniformMatrix4fv(userData.mvpLoc, 1, GL_FALSE,
+						(GLfloat*) &userData.mvpMatrix.m[0][0]);
 
-	// Draw a sphere
-	glDrawElements(GL_TRIANGLE_STRIP, userData->numIndices, GL_UNSIGNED_INT,
-							userData->indices);
-	/*
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
-	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, vColors);
-	glEnableVertexAttribArray(0);
-	glEnableVertexAttribArray(1);
-	glDrawArrays(GL_LINES, 0, 6);*/
-
+	glDrawArrays(GL_LINES, 0, 6);
 }
 
-void Origin::cleanup() {
-	UserData *userData = esContext.userData;
 
-	if (userData->vertices != NULL) {
-		free(userData->vertices);
-	}
-
-	if (userData->indices != NULL) {
-		free(userData->indices);
-	}
-
-	// Delete program object
-	glDeleteProgram(userData->programObject);
-}

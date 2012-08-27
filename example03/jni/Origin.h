@@ -9,20 +9,16 @@
 #define ORIGIN_H_
 
 #include "esUtil.h"
+#include "Drawable.h"
 
-class Origin {
-
-private:
-	ESContext esContext;
-	UserData  userData;
+class Origin : Drawable {
 
 public:
 	Origin();
 	virtual ~Origin();
-	void cleanup();
 
-	int init(float, float);
-	void drawFrame();
+	virtual void init(float width, float height);
+	virtual void drawFrame();
 };
 
 #endif /* ORIGIN_H_ */
