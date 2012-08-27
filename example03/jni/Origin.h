@@ -16,9 +16,9 @@ class Origin : Drawable {
 public:
 	Origin();
 	virtual ~Origin();
-
+	virtual ESContext* getESContext();
 	virtual void init(float width, float height);
-	virtual void drawFrame();
+	virtual void drawFrame(ESMatrix *);
 };
 
 #endif /* ORIGIN_H_ */

@@ -19,11 +19,12 @@ protected:
 public:
 	Drawable();
 	virtual ~Drawable();
+	virtual ESContext* getESContext();
 
 	virtual void init(float width, float height);
 
 	virtual void cleanup();
-	virtual void drawFrame() = 0;
+	virtual void drawFrame(ESMatrix*) = 0;
 };
 
 #endif /* DRAWABLE_H_ */

@@ -33,6 +33,10 @@ void Drawable::init(float width, float height)
    esContext.height = height;
 }
 
+ESContext* Drawable::getESContext()
+{
+	return &esContext;
+}
 
 void Drawable::cleanup() {
 	UserData *userData = esContext.userData;

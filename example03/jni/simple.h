@@ -7,6 +7,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_myCleanup
+  (JNIEnv *, jclass);
+
 /*
  * Class:     org_nzdis_example02_ExampleView
  * Method:    myDrawFrame

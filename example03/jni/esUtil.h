@@ -184,6 +184,12 @@ void ESUTIL_API esMatrixMultiply(ESMatrix *result, ESMatrix *srcA, ESMatrix *src
 void ESUTIL_API esMatrixLoadIdentity(ESMatrix *result);
 
 
+//////////////////////////////////////////////////////////////
+////////////////////   S E N S O R S /////////////////////////
+
+extern int SENSORS_ENABLED;
+void setup_sensors();
+
 
 #ifdef __cplusplus
 }

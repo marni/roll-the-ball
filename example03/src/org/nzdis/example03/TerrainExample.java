@@ -29,10 +29,11 @@ public class TerrainExample extends Activity {
     	surfaceView.onResume();
   	}
 
-	@Override
+	  @Override
   	protected void onPause() {
     	super.onPause();
     	surfaceView.onPause();
+      GLESView.myCleanup();
   	}
 	
 }

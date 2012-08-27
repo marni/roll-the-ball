@@ -26,6 +26,11 @@ Origin::Origin() {
 Origin::~Origin() {
 }
 
+ESContext* Origin::getESContext()
+{
+	return Drawable::getESContext();
+}
+
 
 ///
 // Initialize the shader and program object
@@ -70,9 +75,7 @@ void Origin::init(float width, float height)
    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 }
 
-void Origin::drawFrame() {
-	float aspect;
-	ESMatrix perspective;
+void Origin::drawFrame(ESMatrix *perspective) {
 	ESMatrix modelview;
 	GLfloat vVertices[] = {
 			0.0f, 0.0f, 0.0f,
@@ -96,26 +99,13 @@ void Origin::drawFrame() {
 	glViewport(0, 0, esContext.width, esContext.height);
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	// Compute the window aspect ratio
-	aspect = esContext.width / esContext.height;
+	// Generate a model view matrix to rotate/translate the cube
+	esMatrixLoadIdentity(&modelview);
+	userData.angle = 0.0f;
 
-	// Generate a perspective matrix with a 60 degree FOV
-	   esMatrixLoadIdentity(&perspective);
-	   esPerspective(&perspective, 60.0f, aspect, 0.0f, 10.0f);
-
-	   // Generate a model view matrix to rotate/translate the cube
-	   esMatrixLoadIdentity(&modelview);
-
-	   // Translate away from the viewer
-	   esTranslate(&modelview, 0.0, 0.0, 0.0);
-
-	   userData.angle = 45.0f;
-	   // Rotate the cube
-	   esRotate(&modelview, userData.angle, 1.0, 1.0, 0.0);
-
-	   // Compute the final MVP by multiplying the
-	   // modevleiw and perspective matrices together
-	   esMatrixMultiply(&userData.mvpMatrix, &modelview, &perspective);
+	// Compute the final MVP by multiplying the
+	// modevleiw and perspective matrices together
+	esMatrixMultiply(&userData.mvpMatrix, &modelview, perspective);
 
 	// use the program object
 	glUseProgram(userData.programObject);
