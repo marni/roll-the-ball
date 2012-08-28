@@ -27,13 +27,18 @@ public class TerrainExample extends Activity {
   	protected void onResume() {
     	super.onResume();
     	surfaceView.onResume();
+    	new Thread(new Runnable() {
+    		public void run() {
+    			GLESView.myStartSensors();
+    		}
+    	}).start();
   	}
 
 	  @Override
   	protected void onPause() {
     	super.onPause();
     	surfaceView.onPause();
-      GLESView.myCleanup();
+    	GLESView.myCleanup();
   	}
 	
 }

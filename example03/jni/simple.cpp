@@ -17,6 +17,12 @@ JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_myCleanup
 	SENSORS_ENABLED = 0;
 }
 
+JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_myStartSensors
+  (JNIEnv *, jclass)
+{
+	SENSORS_ENABLED = 1;
+	setup_sensors();
+}
 
 JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_myDrawFrame
   (JNIEnv *env, jclass c)
@@ -37,7 +43,6 @@ JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_mySurfaceChanged
 {
 	glViewport(0, 0, width, height);
 	origin.init(width, height);
-	setup_sensors();
 }
 
 

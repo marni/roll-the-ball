@@ -289,7 +289,7 @@ static int get_sensorevents(int fd, int events, void* data) {
     //ASensorEventQueue* sensorEventQueue;
 	while (ASensorEventQueue_getEvents(sensorEventQueue, &event, 1) > 0) {
 		if (event.type == ASENSOR_TYPE_ACCELEROMETER) {
-			//LOGI("accl(x,y,z,t): %f %f %f %lld", event.acceleration.x, event.acceleration.y, event.acceleration.z, event.timestamp);
+			LOGI("accl(x,y,z,t): %f %f %f %lld", event.acceleration.x, event.acceleration.y, event.acceleration.z, event.timestamp);
 			if (accCounter == 0 || accCounter == 1000) {
 				LOGI("Acc-Time: %lld (%f)", event.timestamp, ((double)(event.timestamp-lastAccTime))/1000000000.0);
 				lastAccTime = event.timestamp;

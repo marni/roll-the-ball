@@ -24,7 +24,8 @@ public class GLESView extends GLSurfaceView {
 		System.loadLibrary("simple");
 	}
 
-  public static native void myCleanup();
+	public static native void myCleanup();
+	public static native void myStartSensors();
 	public static native void myDrawFrame();
 	public static native void mySurfaceChanged(int width, int height);
 	public static native void mySurfaceCreated();
