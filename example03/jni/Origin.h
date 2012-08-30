@@ -11,12 +11,12 @@
 #include "esUtil.h"
 #include "Drawable.h"
 
-class Origin : Drawable {
+class Origin : public Drawable {
 
 public:
 	Origin();
 	virtual ~Origin();
-	virtual ESContext* getESContext();
+
 	virtual void init(float width, float height);
 	virtual void drawFrame(ESMatrix *);
 };

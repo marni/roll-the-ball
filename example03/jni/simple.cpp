@@ -4,24 +4,28 @@
 #include "simple.h"
 #include "esUtil.h"
 #include "Origin.h"
+#include "Sphere.h"
 #include "Terrain.h"
 
 
 //Terrain *terrain;
 Origin origin;
+Sphere sphere;
 
 
 JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_myCleanup
 (JNIEnv *env, jclass c)
 {
 	SENSORS_ENABLED = 0;
+	origin.cleanup();
+	sphere.cleanup();
 }
 
 JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_myStartSensors
   (JNIEnv *, jclass)
 {
 	SENSORS_ENABLED = 1;
-	setup_sensors();
+	//setup_sensors();
 }
 
 JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_myDrawFrame
@@ -32,9 +36,11 @@ JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_myDrawFrame
 	// Generate a perspective matrix with a 60 degree FOV
 	esMatrixLoadIdentity(&perspective);
 	aspect = origin.getESContext()->width / origin.getESContext()->height;
-	esPerspective(&perspective, 60.0f, aspect, 0.0f, 10.0f);
+	glViewport(0, 0, origin.getESContext()->width, origin.getESContext()->height);
+	esPerspective(&perspective, 60.0f, aspect, 0.0f, 20.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
-	origin.drawFrame(&perspective);
+	//origin.drawFrame(&perspective);
+	sphere.drawFrame(&perspective);
 }
 
 
@@ -43,6 +49,7 @@ JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_mySurfaceChanged
 {
 	glViewport(0, 0, width, height);
 	origin.init(width, height);
+	sphere.init(width, height);
 }
 
 

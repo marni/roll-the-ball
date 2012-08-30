@@ -26,10 +26,11 @@ Origin::Origin() {
 Origin::~Origin() {
 }
 
+/*
 ESContext* Origin::getESContext()
 {
 	return Drawable::getESContext();
-}
+}*/
 
 
 ///
@@ -124,5 +125,4 @@ void Origin::drawFrame(ESMatrix *perspective) {
 
 	glDrawArrays(GL_LINES, 0, 6);
 }
-
 
