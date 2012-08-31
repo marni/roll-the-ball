@@ -71,7 +71,7 @@ void Origin::init(float width, float height)
 
    // Get the uniform locations
    userData.mvpLoc = glGetUniformLocation(userData.programObject, "um4_mvp");
-   glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	glClearColor(1.0f, 1.0f, 0.0f, 1.0f);
 }
 
 void Origin::drawFrame(ESMatrix *perspective) {
