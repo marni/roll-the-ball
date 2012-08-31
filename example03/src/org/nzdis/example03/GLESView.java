@@ -31,17 +31,18 @@ public class GLESView extends GLSurfaceView {
 	public static native void mySurfaceCreated();
  
   private static class ExampleRenderer implements GLSurfaceView.Renderer {
-    @Override
+    
+	@Override
     public void onDrawFrame(GL10 unused) {
     	myDrawFrame();
     }
 
-    @Override
+	@Override
     public void onSurfaceChanged(GL10 unused, int width, int height) {
     	mySurfaceChanged(width, height);
     }
 
-    @Override
+	@Override
     public void onSurfaceCreated(GL10 unused, EGLConfig config) {
     	mySurfaceCreated();
     }

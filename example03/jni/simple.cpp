@@ -36,7 +36,7 @@ JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_myDrawFrame
 	// Generate a perspective matrix with a 60 degree FOV
 	esMatrixLoadIdentity(&perspective);
 
-	esPerspective(&perspective, 60.0f, aspect, 0.0f, 20.0f);
+	esPerspective(&perspective, 40.0f, aspect, 0.0f, 20.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 	origin.drawFrame(&perspective);
 	sphere.drawFrame(&perspective);
@@ -55,7 +55,7 @@ JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_mySurfaceChanged
 JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_mySurfaceCreated
 (JNIEnv *env, jclass c)
 {
-	glClearColor(1.0f, 1.0f, 0.0f, 1.0f);
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	//origin = new Origin();
 	//terrain = new Terrain(); // FIXME: clean up the memory when the surface is discarded
 }

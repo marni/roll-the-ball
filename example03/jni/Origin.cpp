@@ -71,7 +71,6 @@ void Origin::init(float width, float height)
 
    // Get the uniform locations
    userData.mvpLoc = glGetUniformLocation(userData.programObject, "um4_mvp");
-	glClearColor(1.0f, 1.0f, 0.0f, 1.0f);
 }
 
 void Origin::drawFrame(ESMatrix *perspective) {
@@ -101,7 +100,8 @@ void Origin::drawFrame(ESMatrix *perspective) {
 	// Generate a model view matrix to rotate/translate the cube
 	esMatrixLoadIdentity(&modelview);
 	userData.angle = 0.0f;
-
+	esTranslate(&modelview, 0.5f, 0.5f, -0.5f);
+	esRotate(&modelview, 45.0f, 1.0f, 1.0f, 0.0f);
 	// Compute the final MVP by multiplying the
 	// modevleiw and perspective matrices together
 	esMatrixMultiply(&userData.mvpMatrix, &modelview, perspective);
