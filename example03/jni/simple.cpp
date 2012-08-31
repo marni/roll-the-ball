@@ -32,14 +32,13 @@ JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_myDrawFrame
   (JNIEnv *env, jclass c)
 {
 	ESMatrix perspective;
-	float aspect;
+	float aspect = 1.0f;
 	// Generate a perspective matrix with a 60 degree FOV
 	esMatrixLoadIdentity(&perspective);
-	aspect = origin.getESContext()->width / origin.getESContext()->height;
-	glViewport(0, 0, origin.getESContext()->width, origin.getESContext()->height);
+
 	esPerspective(&perspective, 60.0f, aspect, 0.0f, 20.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
-	//origin.drawFrame(&perspective);
+	origin.drawFrame(&perspective);
 	sphere.drawFrame(&perspective);
 }
 

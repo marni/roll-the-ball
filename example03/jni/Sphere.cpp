@@ -17,9 +17,7 @@
 
 
 
-Sphere::Sphere() {
-	esInitContext(&esContext);
-	esContext.userData = &userData;
+Sphere::Sphere() : Drawable() {
 }
 
 Sphere::~Sphere() {
@@ -60,8 +58,9 @@ void Sphere::init(float width, float height)
 
 void Sphere::drawFrame(ESMatrix* perspective) {
 	ESMatrix modelview;
+	glViewport(0, 0, getESContext()->width, getESContext()->height);
 	esMatrixLoadIdentity(&modelview);
-	esTranslate(&modelview, 0.0f, 0.0f, -5.0f);
+	esTranslate(&modelview, -1.0f, -1.0f, -5.0f);
 	// Compute the final MVP by multiplying the
 	// modelview and perspective matrices together
 	esMatrixMultiply(&userData.mvpMatrix, &modelview, perspective);
@@ -77,6 +76,6 @@ void Sphere::drawFrame(ESMatrix* perspective) {
 			(GLfloat*) &userData.mvpMatrix.m[0][0]);
 LOGI("drawFrame drawing, number of indices: %d", userData.numIndices);
 	// Draw a sphere
-	glDrawElements(GL_TRIANGLES, userData.numIndices, GL_UNSIGNED_INT, userData.indices);
+	glDrawElements(GL_TRIANGLE_STRIP, userData.numIndices, GL_UNSIGNED_INT, userData.indices);
 }
 

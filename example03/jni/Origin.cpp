@@ -18,9 +18,7 @@
 
 
 
-Origin::Origin() {
-	esInitContext(&esContext);
-	esContext.userData = &userData;
+Origin::Origin() : Drawable() {
 }
 
 Origin::~Origin() {
