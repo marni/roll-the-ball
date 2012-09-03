@@ -113,9 +113,16 @@ esFrustum(ESMatrix *result, float left, float right, float bottom, float top, fl
     float       deltaZ = farZ - nearZ;
     ESMatrix    frust;
 
-    if ( (nearZ <= 0.0f) || (farZ <= 0.0f) ||
-         (deltaX <= 0.0f) || (deltaY <= 0.0f) || (deltaZ <= 0.0f) )
+    if ( (nearZ <= 0.0f) || (farZ <= 0.0f) )
+    	return;
+    if ( (deltaX <= 0.0f) || (deltaY <= 0.0f) || (deltaZ <= 0.0f) )
          return;
+
+    LOGI(".");
+    LOGI(".");
+    LOGI("Your frustrum is valid. You should probably only set this up once.");
+    LOGI(".");
+    LOGI(".");
 
     frust.m[0][0] = 2.0f * nearZ / deltaX;
     frust.m[0][1] = frust.m[0][2] = frust.m[0][3] = 0.0f;

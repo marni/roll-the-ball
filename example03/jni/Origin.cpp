@@ -24,12 +24,8 @@ Origin::Origin() : Drawable() {
 Origin::~Origin() {
 }
 
-/*
-ESContext* Origin::getESContext()
-{
-	return Drawable::getESContext();
-}*/
 
+float changingColour = 0.5f;
 
 ///
 // Initialize the shader and program object
@@ -75,6 +71,8 @@ void Origin::init(float width, float height)
 
 void Origin::drawFrame(ESMatrix *perspective) {
 	ESMatrix modelview;
+	changingColour += 0.01f;
+	if (changingColour > 0.9f) changingColour = 0.25f;
 	GLfloat vVertices[] = {
 			0.0f, 0.0f, 0.0f,
 			0.5f, 0.0f, 0.0f,
@@ -85,25 +83,24 @@ void Origin::drawFrame(ESMatrix *perspective) {
 	};
 
 	GLfloat vColors[] = {
-			0.0f, 0.8f, 0.0f, 1.0f,
-			0.0f, 0.8f,	0.0f, 1.0f,
-			0.8f, 0.0f, 0.0f, 1.0f,
-			0.8f, 0.0f, 0.0f, 1.0f,
-			0.8f, 0.8f, 0.0f, 1.0f,
-			0.8f, 0.8f, 0.0f, 1.0f
+			changingColour, 0.0f, 0.0f, 1.0f,
+			changingColour, 0.0f, 0.0f, 1.0f,
+			0.0f, changingColour, 0.0f, 1.0f,
+			0.0f, changingColour, 0.0f, 1.0f,
+			changingColour, changingColour, 0.0f, 1.0f,
+			changingColour, changingColour, 0.0f, 1.0f
 	};
 
 	// clear the color buffer
 	glViewport(0, 0, esContext.width, esContext.height);
-	glClear(GL_COLOR_BUFFER_BIT);
+	//glClear(GL_COLOR_BUFFER_BIT);
 
 	// Generate a model view matrix to rotate/translate the cube
 	esMatrixLoadIdentity(&modelview);
 	userData.angle = 0.0f;
-	esTranslate(&modelview, 0.5f, 0.5f, -0.5f);
-	esRotate(&modelview, 45.0f, 1.0f, 1.0f, 0.0f);
 	// Compute the final MVP by multiplying the
 	// modevleiw and perspective matrices together
+
 	esMatrixMultiply(&userData.mvpMatrix, &modelview, perspective);
 
 	// use the program object
