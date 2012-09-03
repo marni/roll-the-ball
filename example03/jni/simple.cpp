@@ -47,9 +47,9 @@ JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_mySurfaceChanged
 	esMatrixLoadIdentity(&perspective);
     //LOGI("%f %d %d", aspect, width, height);
 	esPerspective(&perspective, 60.0f, aspect, 1.0f, 30.0f);
-	esTranslate(&perspective, 0.0f, 0.0f, -2.0f);
-	esRotate(&perspective, 45.0f, 1.0f, 0.0f, 0.0f);
-	esRotate(&perspective, -5.0f, 0.0f, 1.0f, 0.0f);
+	esTranslate(&perspective, 0.0f, 0.0f, -1.0f);
+	//esRotate(&perspective, 45.0f, 1.0f, 0.0f, 0.0f);
+	//esRotate(&perspective, -5.0f, 0.0f, 1.0f, 0.0f);
 
 	origin.init(width, height);
 	sphere.init(width, height);

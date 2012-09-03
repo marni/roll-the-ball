@@ -50,10 +50,10 @@ GLuint esLoadShader(GLenum shader_type, const char* src)
     char *log =  malloc(sizeof(char) * log_length);
     GLint chars_written;
     glGetShaderInfoLog(sid, log_length, &chars_written, log);
-    checkGLError("Error esLoadShader: Loading and compiling a shader.");
+    checkGLError(" *********    Error esLoadShader: Loading and compiling a shader.");
     free(log);
   }
-  checkGLError("Error esLoadShader: Something went wrong with the shader.");
+  checkGLError(" *********** Error esLoadShader: Something went wrong with the shader.");
   return sid;
 }
 

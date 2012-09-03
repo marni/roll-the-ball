@@ -91,10 +91,6 @@ void Origin::drawFrame(ESMatrix *perspective) {
 			changingColour, changingColour, 0.0f, 1.0f
 	};
 
-	// clear the color buffer
-	glViewport(0, 0, esContext.width, esContext.height);
-	//glClear(GL_COLOR_BUFFER_BIT);
-
 	// Generate a model view matrix to rotate/translate the cube
 	esMatrixLoadIdentity(&modelview);
 	userData.angle = 0.0f;
