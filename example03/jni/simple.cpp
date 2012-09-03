@@ -32,13 +32,6 @@ JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_myStartSensors
 JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_myDrawFrame
   (JNIEnv *env, jclass c)
 {
-	ESMatrix perspective;
-	// Generate a perspective matrix with a 60 degree FOV
-	esMatrixLoadIdentity(&perspective);
-    //LOGI("%f %d %d", aspect, width, height);
-	esPerspective(&perspective, 60.0f, aspect, 1.0f, 30.0f);
-	esTranslate(&perspective, 0.0f, 0.0f, -2.0f);
-	//esRotate(&perspective, -45.0f, 1.0f, 1.0f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 	sphere.drawFrame(&perspective);
 	origin.drawFrame(&perspective);
@@ -50,6 +43,14 @@ JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_mySurfaceChanged
 {
 	glViewport(0, 0, width, height);
 	aspect = (float)width / (float)height;
+	// Generate a perspective matrix with a 60 degree FOV
+	esMatrixLoadIdentity(&perspective);
+    //LOGI("%f %d %d", aspect, width, height);
+	esPerspective(&perspective, 60.0f, aspect, 1.0f, 30.0f);
+	esTranslate(&perspective, 0.0f, 0.0f, -2.0f);
+	esRotate(&perspective, 45.0f, 1.0f, 0.0f, 0.0f);
+	esRotate(&perspective, -5.0f, 0.0f, 1.0f, 0.0f);
+
 	origin.init(width, height);
 	sphere.init(width, height);
 }

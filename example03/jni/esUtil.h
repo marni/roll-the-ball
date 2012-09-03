@@ -44,11 +44,17 @@ typedef struct
 
 	GLint positionLoc; // Attribute location for position
 	GLint colorLoc; // Attribute location for color
+	GLint normalsLoc; // Attribute location for normals array
+
 	GLint mvpLoc; // Uniform location
+	GLint mvLoc; // Uniform location
+	GLint lightPosLoc; // Uniform location
+
 
 	GLfloat *vertices; // Vertex data
 	GLuint *indices;
 	int numIndices;
+	GLfloat *normals; // Normals
 
 	GLfloat angle; // Rotation angle
 

@@ -118,7 +118,7 @@ GLuint esCreateProgram(const char* pVertexSource, const char* pFragmentSource) {
 void printGLString(const char *name, GLenum s)
 {
     const char *v = (const char *) glGetString(s);
-    LOGI("GL %s = %s\n", name, v);
+    LOGI(" **********    GL %s = %s\n", name, v);
 }
 
 
@@ -127,7 +127,7 @@ void checkGLError(const char* op)
 	GLint error;
     for (error = glGetError(); error; error = glGetError())
     {
-        LOGI("after %s() glError (0x%x)\n", op, error);
+        LOGI(" **********    after %s() glError (0x%x)\n", op, error);
     }
 }
 /*
