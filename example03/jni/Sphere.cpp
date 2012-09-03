@@ -96,32 +96,35 @@ void Sphere::init(float width, float height)
    userData.mvLoc = glGetUniformLocation(userData.programObject, "um4_MVMatrix");
    userData.lightPosLoc = glGetUniformLocation(userData.programObject, "uv3_LightPos");
 
-   userData.numIndices = esGenSphere(40, 0.25f, &userData.vertices,
+   userData.numIndices = esGenSphere(60, 0.5f, &userData.vertices,
                                         &userData.normals, NULL, &userData.indices);
 }
 
 float position_x;
 float position_y;
-float position_z = -0.5f;
+float position_z = 0.0f;
 
-float position_delta = 0.03;
+float position_delta = 0.05;
 float acc_min = 0.15;
 
+float x_max = 4.0;
+float y_max = 2.0;
+
 void update_position(ESMatrix* model) {
-	if (acceleration_x < -acc_min && position_y < 1.0) position_y += position_delta;
-	if (acceleration_x > acc_min && position_y > -1.0) position_y -= position_delta;
-	if (acceleration_y < -acc_min && position_x > -2.0) position_x -= position_delta;
-	if (acceleration_y > acc_min && position_x < 2.0) position_x += position_delta;
+	if (acceleration_x < -acc_min && position_y < y_max) position_y += position_delta;
+	if (acceleration_x > acc_min && position_y > -y_max) position_y -= position_delta;
+	if (acceleration_y < -acc_min && position_x > -x_max) position_x -= position_delta;
+	if (acceleration_y > acc_min && position_x < x_max) position_x += position_delta;
 	esTranslate(model, position_x, position_y, position_z);
 }
 
 void Sphere::drawFrame(ESMatrix* perspective) {
    GLfloat vColor[] = { 1.0f, 0.0f, 0.0f, 1.0f };
-   GLfloat vLightPos[] = { 0.0f, 0.0f, -2.0f };
+   GLfloat vLightPos[] = { 0.0f, 0.0f, 2.3f };
 
 	ESMatrix modelview;
    // Use culling to remove back faces.
-   glEnable(GL_CULL_FACE);
+   // glEnable(GL_CULL_FACE);
    // Enable depth testing
    glEnable(GL_DEPTH_TEST);
 
