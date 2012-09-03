@@ -31,6 +31,10 @@ extern "C" {
 #define TRUE 1
 #endif
 
+extern float acceleration_x;
+extern float acceleration_y;
+extern float acceleration_z;
+
 
 typedef struct
 {

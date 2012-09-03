@@ -13,7 +13,7 @@
 #include <GLES2/gl2ext.h>
 
 #include "Sphere.h"
-
+#include "esUtil.h"
 
 
 Sphere::Sphere() : Drawable() {
@@ -100,6 +100,21 @@ void Sphere::init(float width, float height)
                                         &userData.normals, NULL, &userData.indices);
 }
 
+float position_x;
+float position_y;
+float position_z = -0.5f;
+
+float position_delta = 0.03;
+float acc_min = 0.15;
+
+void update_position(ESMatrix* model) {
+	if (acceleration_x < -acc_min && position_y < 1.0) position_y += position_delta;
+	if (acceleration_x > acc_min && position_y > -1.0) position_y -= position_delta;
+	if (acceleration_y < -acc_min && position_x > -2.0) position_x -= position_delta;
+	if (acceleration_y > acc_min && position_x < 2.0) position_x += position_delta;
+	esTranslate(model, position_x, position_y, position_z);
+}
+
 void Sphere::drawFrame(ESMatrix* perspective) {
    GLfloat vColor[] = { 1.0f, 0.0f, 0.0f, 1.0f };
    GLfloat vLightPos[] = { 0.0f, 0.0f, -2.0f };
@@ -111,8 +126,8 @@ void Sphere::drawFrame(ESMatrix* perspective) {
    glEnable(GL_DEPTH_TEST);
 
 	esMatrixLoadIdentity(&modelview);
-   //esTranslate(&modelview, 0.5f, 0.5f, -0.5f);
-   // esTranslate(&modelview, 0.0f, 0.0f, -2.0f);
+	update_position(&modelview);
+
 	// Compute the final MVP by multiplying the
 	// modelview and perspective matrices together
 	esMatrixMultiply(&userData.mvpMatrix, &modelview, perspective);
