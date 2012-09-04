@@ -102,38 +102,42 @@ void Sphere::init(float width, float height)
 
 float position_x = 0.0f;
 float position_y = 0.0f;
-float position_z = 0.0f;
+float position_z = -2.0f;
 
-float position_delta = 0.05;
-float acc_min = 0.15;
+float acc_min = 0.35;
 
 float x_max = 4.0;
 float y_max = 2.0;
+float z_min = -2.0;
 float x_max_doubled = x_max * 2.0;
 float y_max_doubled = y_max * 2.0;
+float z_min_doubled = z_min * 2.0;
 
 float velocity_x = 0.0f;
 float velocity_y = 0.0f;
 float velocity_z = 0.0f;
 
-float gravity_z = -9.8;
+float gravity = 9.8;
 
 void update_position(ESMatrix* model) {
 	// Acceleration
-	//if (acceleration_y < -acc_min || acceleration_y > acc_min) velocity_x += acceleration_y * 0.01;
-	//if (acceleration_x < -acc_min || acceleration_x > acc_min) velocity_y -= acceleration_x * 0.01;
-	velocity_x += acceleration_y * 0.01;
-	velocity_y -= acceleration_x * 0.01;
-	velocity_z += gravity_z * 0.01;
+	if (acceleration_y < -acc_min || acceleration_y > acc_min) velocity_x += acceleration_y * 0.01;
+	if (acceleration_x < -acc_min || acceleration_x > acc_min) velocity_y -= acceleration_x * 0.01;
+	if (acceleration_z - gravity > acc_min) {
+		velocity_z -= (acceleration_z - gravity) * 0.01;
+	}
+	velocity_z -= gravity * 0.0005;
+
 
 	// Air friction
 	velocity_x *= 0.9;
 	velocity_y *= 0.9;
-	velocity_z *= 0.9;
+	velocity_z *= 0.96;
 
 	// Update position
 	position_x += velocity_x;
 	position_y += velocity_y;
+	position_z += velocity_z;
 
 	//
 	if (position_x < -x_max) {
@@ -153,10 +157,11 @@ void update_position(ESMatrix* model) {
 		velocity_y = -velocity_y;
 	}
 
-	//if (acceleration_x < -acc_min && position_y < y_max) position_y += position_delta;
-	//if (acceleration_x > acc_min && position_y > -y_max) position_y -= position_delta;
-	//if (acceleration_y < -acc_min && position_x > -x_max) position_x -= position_delta;
-	//if (acceleration_y > acc_min && position_x < x_max) position_x += position_delta;
+	if (position_z < z_min) {
+		position_z = z_min_doubled - position_z;
+		velocity_z = -velocity_z;
+	}
+
 	esTranslate(model, position_x, position_y, position_z);
 }
 
