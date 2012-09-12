@@ -33,6 +33,7 @@ JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_myDrawFrame
   (JNIEnv *env, jclass c)
 {
 	glClear(GL_COLOR_BUFFER_BIT);
+	glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
 	sphere.drawFrame(&perspective);
 	origin.drawFrame(&perspective);
 }
@@ -59,7 +60,6 @@ JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_mySurfaceChanged
 JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_mySurfaceCreated
 (JNIEnv *env, jclass c)
 {
-	glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
 	//origin = new Origin();
 	//terrain = new Terrain(); // FIXME: clean up the memory when the surface is discarded
 }
