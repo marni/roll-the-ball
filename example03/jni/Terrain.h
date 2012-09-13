@@ -1,6 +1,6 @@
 
-#ifndef _Included_terrain_h
-#define _Included_terrain_h
+#ifndef _Terrain_h
+#define _Terrain_h
 
 
 #include <iostream>
@@ -8,47 +8,39 @@
 #include <math.h>
 #include <stdlib.h>
 
+#include "esUtil.h"
+#include "Drawable.h"
+
 using namespace std;
 
-#define WINDOW_WIDTH 640
-#define WINDOW_HEIGHT 480
-
-#define BITMAP_ID 0x4D42
 #define MAP_X	32
 #define MAP_Z	32
-#define MAP_SCALE	20.0f
+#define MAP_SCALE	4.0f
+#define MAP_HEIGHT_SCALE	3.0f
 
 
 
-class Terrain
+class Terrain : public Drawable
 {
 
-	//AUX_RGBImageRec
-	unsigned char* imageData;		   // the map image data
+	unsigned char* imageData;	   // the map image data
 	unsigned char* landTexture;	   // land texture data
-	unsigned int land;			      // the land texture object
+	unsigned int land;			   // the land texture object
 
 	////// Terrain Data
 	float terrain[MAP_X][MAP_Z][3];		// heightfield terrain data (0-255); 256x256
-
-	float radians, angle;
-
-	float cameraX, cameraY, cameraZ;
-	float lookX, lookY, lookZ;
-	float mouseX, mouseY, mouseZ;
-
-	GLuint __programObject;
+	float terrainColors[MAP_X][MAP_Z][4];		// terrain colors
 
 
 public:
-	void Initialize(float, float);
-	void InitializeTerrain();
-	void Render();
-	bool LoadTextures();
-	void CleanUp();
+	Terrain();
 
+	virtual void init(float width, float height);
+	virtual void drawFrame(ESMatrix *);
+	virtual void cleanup();
+
+	void readHeightImage();
 
 };
 
 #endif
-

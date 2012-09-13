@@ -11,6 +11,8 @@
 //Terrain *terrain;
 Origin origin;
 Sphere sphere;
+Terrain terrain;
+
 ESMatrix perspective;
 float aspect;
 
@@ -20,6 +22,7 @@ JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_myCleanup
 	SENSORS_ENABLED = 0;
 	origin.cleanup();
 	sphere.cleanup();
+	terrain.cleanup();
 }
 
 JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_myStartSensors
@@ -36,6 +39,7 @@ JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_myDrawFrame
 	glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
 	sphere.drawFrame(&perspective);
 	origin.drawFrame(&perspective);
+	terrain.drawFrame(&perspective);
 }
 
 
@@ -54,6 +58,7 @@ JNIEXPORT void JNICALL Java_org_nzdis_example03_GLESView_mySurfaceChanged
 
 	origin.init(width, height);
 	sphere.init(width, height);
+	terrain.init(width, height);
 }
 
 
