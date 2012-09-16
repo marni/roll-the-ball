@@ -77,7 +77,7 @@ void Terrain::init(float width, float height)
 
 
 void Terrain::readHeightImage() {
-	imageData = (unsigned char*) malloc(MAP_X * MAP_Z * sizeof(char));
+	imageData = new unsigned char[MAP_X * MAP_Z * sizeof(char)];
 	for (int z = 0; z < MAP_Z; z++)	{
 		for (int x = 0; x < MAP_X; x++)	{
 			imageData[z * MAP_Z + x] = 0;
