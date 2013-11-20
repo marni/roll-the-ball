@@ -8,6 +8,8 @@
 #ifndef DRAWABLE_H_
 #define DRAWABLE_H_
 
+#include <string>
+
 #include "esUtil.hpp"
 
 

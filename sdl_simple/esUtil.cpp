@@ -4,9 +4,8 @@
  * OpenGL ES utilities.
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+
+#include <string>
 
 #include "esUtil.hpp"
 
@@ -23,14 +22,15 @@ void ESUTIL_API esInitContext ( ESContext *esContext )
 
 
 
-GLuint esLoadShader(GLenum shader_type, const char* src)
+GLuint esLoadShader(GLenum shader_type, std::string src)
 {
   GLint succeeded;
   GLuint sid;
 
   sid = glCreateShader(shader_type);
   // glShaderSource(sid, 1, (const GLchar **) &src, NULL);
-  glShaderSource(sid, 1, &src, NULL);
+  char const * shaderCodePointer = src.c_str();
+  glShaderSource(sid, 1, &shaderCodePointer, NULL);
   glCompileShader(sid);
   glGetShaderiv(sid, GL_COMPILE_STATUS, &succeeded);
 
@@ -50,17 +50,17 @@ GLuint esLoadShader(GLenum shader_type, const char* src)
 }
 
 
-GLuint esCreateProgram(const char* pVertexSource, const char* pFragmentSource) {
+GLuint esCreateProgram(std::string vertexSource, std::string fragmentSource) {
 	GLuint vertexShader;
 	GLuint fragmentShader;
 	GLuint programObject;
 	GLint linked;
 
 	// Load the vertex/fragment shaders
-	vertexShader = esLoadShader(GL_VERTEX_SHADER, pVertexSource);
+	vertexShader = esLoadShader(GL_VERTEX_SHADER, vertexSource);
 	if (vertexShader == 0)
 		return 0;
-	fragmentShader = esLoadShader(GL_FRAGMENT_SHADER, pFragmentSource);
+	fragmentShader = esLoadShader(GL_FRAGMENT_SHADER, fragmentSource);
 	if (fragmentShader == 0) {
 		glDeleteShader(vertexShader);
 		return 0;

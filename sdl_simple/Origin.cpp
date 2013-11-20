@@ -9,7 +9,6 @@
  *      Author: mariusz
  */
 
-#include <stdlib.h>
 
 #include "Drawable.hpp"
 #include "Origin.hpp"
@@ -31,7 +30,7 @@ float changingColour = 0.5f;
 void Origin::init(float width, float height)
 {
 	Drawable::init(width, height);
-	char vShaderStr[] =
+    std::string vShaderStr =
       "attribute vec4 av4_position;                \n"
 	  "attribute vec4 av4_color;                   \n"
 	  "uniform mat4 um4_mvp; 	                   \n"
@@ -42,7 +41,7 @@ void Origin::init(float width, float height)
 	  "   color = av4_color;                       \n"
       "}                                           \n";
 
-	char fShaderStr[] =
+    std::string fShaderStr =
       "#ifdef GL_ES                                \n"
       "precision mediump float;                    \n"
       "#endif                                      \n"

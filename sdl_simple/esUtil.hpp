@@ -16,6 +16,7 @@
 #include <time.h>
 #endif
 
+#include <string>
 #include <cmath>
 
 
@@ -72,8 +73,8 @@ typedef struct _escontext
 
 
 
-GLuint esLoadShader(GLenum, const char*);
-GLuint esCreateProgram(const char* pVertexSource, const char* pFragmentSource);
+GLuint esLoadShader(GLenum, std::string);
+GLuint esCreateProgram(std::string pVertexSource, std::string pFragmentSource);
 
 void esNormalize(float v[3]);
 void esNorm_crossprod(float v1[3], float v2[3], float out[3]);

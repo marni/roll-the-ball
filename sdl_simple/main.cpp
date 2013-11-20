@@ -8,17 +8,16 @@
 //
 
 
+#include "esUtil.hpp"
+
 #ifdef __APPLE__
-#include "esUtil.hpp"  // I put this in both sides of the if statement as for Windows there was an error when glew.h is not before gl.h
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
 #else
-#include "esUtil.hpp"
 #include <SDL.h>
 #include <SDL_opengl.h>
-#include <gl\GL.h>
-#include <gl\GLU.h>
-
+#include <gl/GL.h>
+#include <gl/GLU.h>
 #pragma comment(lib, "SDL2.lib")
 #pragma comment(lib, "SDL2main.lib")
 #pragma comment(lib, "OpenGL32.lib")
