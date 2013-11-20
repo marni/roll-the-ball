@@ -136,7 +136,6 @@ static void setupSDL()
     // Initialize GLEW
     if (glewInit() != GLEW_OK) {
         fprintf(stderr, "Failed to initialize GLEW\n");
-        return -1;
     }
 #endif
     
