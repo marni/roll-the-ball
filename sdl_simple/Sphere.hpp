@@ -12,7 +12,7 @@
 #include "Drawable.hpp"
 
 
-class Sphere : public nzdis::Drawable {
+class Sphere : public Drawable {
 
 public:
 	Sphere();

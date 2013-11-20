@@ -20,7 +20,7 @@ using namespace std;
 
 
 
-class Terrain : public nzdis::Drawable
+class Terrain : public Drawable
 {
 
 	unsigned char* imageData;	   // the map image data
