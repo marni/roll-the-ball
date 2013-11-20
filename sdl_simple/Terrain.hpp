@@ -5,13 +5,13 @@
 
 #include <iostream>
 #include <fstream>
-#include <math.h>
 #include <stdlib.h>
 
 #include "esUtil.hpp"
 #include "Drawable.hpp"
 
 using namespace std;
+
 
 #define MAP_X	32
 #define MAP_Z	32
@@ -20,7 +20,7 @@ using namespace std;
 
 
 
-class Terrain : public Drawable
+class Terrain : public nzdis::Drawable
 {
 
 	unsigned char* imageData;	   // the map image data

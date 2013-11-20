@@ -12,6 +12,7 @@
 #include "Drawable.hpp"
 
 
+using namespace nzdis;
 
 Drawable::Drawable() {
 	esInitContext(&esContext);

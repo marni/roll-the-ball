@@ -11,7 +11,8 @@
 #include "esUtil.hpp"
 #include "Drawable.hpp"
 
-class Sphere : public Drawable {
+
+class Sphere : public nzdis::Drawable {
 
 public:
 	Sphere();

@@ -16,6 +16,9 @@
 #include <time.h>
 #endif
 
+#include <math.h>
+
+
 
 // adopted from the code of esUtil.h, see:
 #define ESUTIL_API

@@ -10,6 +10,9 @@
 
 #include "esUtil.hpp"
 
+
+namespace nzdis {
+
 class Drawable {
 
 protected:
@@ -26,5 +29,8 @@ public:
 	virtual void cleanup();
 	virtual void drawFrame(ESMatrix*) = 0;
 };
+
+
+}
 
 #endif /* DRAWABLE_H_ */

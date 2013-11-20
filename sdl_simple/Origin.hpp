@@ -11,7 +11,7 @@
 #include "esUtil.hpp"
 #include "Drawable.hpp"
 
-class Origin : public Drawable {
+class Origin : public nzdis::Drawable {
 
 public:
 	Origin();
