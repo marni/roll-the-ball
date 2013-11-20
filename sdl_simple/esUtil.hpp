@@ -9,9 +9,11 @@
 #ifdef __APPLE__
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
+#include <sys/time.h>
 #else
 #include <SDL.h>
 #include <SDL_opengl.h>
+#include <time.h>
 #endif
 
 
