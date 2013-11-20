@@ -11,9 +11,21 @@
 #include <SDL2/SDL_opengl.h>
 #include <sys/time.h>
 #else
+#include <time.h>
+#include <Windows.h>
+//#define GL_GLEXT_PROTOTYPES
+#include <gl/glew.h>
+#include <gl/Glext.h>
+#include <gl/GL.h>
+#include <gl/GLU.h>
+#include <gl/GLUT.h>
 #include <SDL.h>
 #include <SDL_opengl.h>
-#include <time.h>
+#pragma comment(lib, "opengl32.lib")
+#pragma comment(lib, "glu32.lib")
+#pragma comment(lib, "glew32.lib")
+#pragma comment(lib, "SDL2.lib")
+#pragma comment(lib, "SDL2main.lib")
 #endif
 
 #include <string>
