@@ -8,9 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-
 #include "esUtil.hpp"
-
 
 ///
 // Initialize ES utility context.  This must be called before
