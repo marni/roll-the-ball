@@ -16,7 +16,7 @@
 #include <time.h>
 #endif
 
-#include <math.h>
+#include <cmath>
 
 
 
