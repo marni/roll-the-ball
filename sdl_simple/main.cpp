@@ -129,9 +129,17 @@ static void setupSDL()
      * SDL_GL_DOUBLEBUFFER attribute.
      */
     //glEnableClientState(GL_VERTEX_ARRAY);
-    SDL_GLContext context = SDL_GL_CreateContext(window);
+    SDL_GL_CreateContext(window);
     SDL_ShowWindow(window);
 
+#ifdef _WIN32
+    // Initialize GLEW
+    if (glewInit() != GLEW_OK) {
+        fprintf(stderr, "Failed to initialize GLEW\n");
+        return -1;
+    }
+#endif
+    
     // SDL_GL_SetSwapInterval(1);
     // SDL_GL_SwapWindow(window);
 }
