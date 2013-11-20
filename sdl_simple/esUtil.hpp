@@ -5,8 +5,14 @@
 #ifndef ESUTIL_H_
 #define ESUTIL_H_
 
+
+#ifdef __APPLE__
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
+#else
+#include <SDL.h>
+#include <SDL_opengl.h>
+#endif
 
 
 // adopted from the code of esUtil.h, see:
