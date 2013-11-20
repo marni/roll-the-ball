@@ -8,8 +8,6 @@
 #ifndef SPHERE_H_
 #define SPHERE_H_
 
-#include <SDL2/SDL.h>
-
 #include "esUtil.hpp"
 #include "Drawable.hpp"
 

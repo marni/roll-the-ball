@@ -8,8 +8,6 @@
 #ifndef DRAWABLE_H_
 #define DRAWABLE_H_
 
-#include <SDL2/SDL.h>
-
 #include "esUtil.hpp"
 
 class Drawable {
