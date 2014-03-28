@@ -11,17 +11,23 @@
 #include "esUtil.hpp"
 
 #ifdef __APPLE__
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_opengl.h>
-#else
-#include <SDL.h>
-#include <SDL_opengl.h>
-#include <gl/GL.h>
-#include <gl/GLU.h>
-#pragma comment(lib, "SDL2.lib")
-#pragma comment(lib, "SDL2main.lib")
-#pragma comment(lib, "OpenGL32.lib")
-#pragma comment(lib, "glu32.lib")
+    #include "TargetConditionals.h"
+    #if TARGET_OS_IPHONE
+        #include "SDL.h"
+        #include "SDL_opengles2.h"
+    #else
+        #include <SDL2/SDL.h>
+        #include <SDL2/SDL_opengles2.h>
+    #endif
+#elif _WIN64
+    #include <SDL.h>
+    #include <SDL_opengl.h>
+    #include <gl/GL.h>
+    #include <gl/GLU.h>
+    #pragma comment(lib, "SDL2.lib")
+    #pragma comment(lib, "SDL2main.lib")
+    #pragma comment(lib, "OpenGL32.lib")
+    #pragma comment(lib, "glu32.lib")
 #endif
 
 
@@ -86,9 +92,11 @@ void setupWindow(int width, int height)
 	esTranslate(&perspective, 0.0f, 0.0f, -5.0f);
 	//esRotate(&perspective, 45.0f, 1.0f, 0.0f, 0.0f);
 	//esRotate(&perspective, -5.0f, 0.0f, 1.0f, 0.0f);
-    
-glEnableClientState(GL_VERTEX_ARRAY);
-    
+#ifdef TARGET_OS_IPHONE
+#elif __ANDROID__
+#else
+    glEnableClientState(GL_VERTEX_ARRAY);
+#endif
 	origin.init(width, height);
 	sphere.init(width, height);
 	terrain.init(width, height);
@@ -98,7 +106,7 @@ glEnableClientState(GL_VERTEX_ARRAY);
 
 static void setupSDL()
 {
-    if ( SDL_Init(SDL_INIT_VIDEO|SDL_INIT_EVERYTHING) < 0 ) {
+    if ( SDL_Init(SDL_INIT_VIDEO|SDL_INIT_EVENTS|SDL_INIT_JOYSTICK) < 0 ) {
         fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
         exit(1);
     }

@@ -6,26 +6,44 @@
 #define ESUTIL_H_
 
 
-#ifdef __APPLE__
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_opengl.h>
-#include <sys/time.h>
+#ifdef _WIN64 
+    // Let us assume it is Windows
+    #include <time.h>
+    #include <Windows.h>
+    //#define GL_GLEXT_PROTOTYPES
+    #include <gl/glew.h>
+    #include <gl/Glext.h>
+    #include <gl/GL.h>
+    #include <gl/GLU.h>
+    #include <gl/GLUT.h>
+    #include <SDL.h>
+    #include <SDL_opengl.h>
+    #pragma comment(lib, "opengl32.lib")
+    #pragma comment(lib, "glu32.lib")
+    #pragma comment(lib, "glew32.lib")
+    #pragma comment(lib, "SDL2.lib")
+    #pragma comment(lib, "SDL2main.lib")
+
+#elif __APPLE__
+    #include "TargetConditionals.h"
+    #if TARGET_OS_IPHONE
+        // Let us assume it is iOS
+        #include "SDL.h"
+        #include "SDL_opengles2.h"
+        #include <time.h>
+    #elif TARGET_OS_MAC
+        // We assume have a Mac OSX
+        #include <SDL2/SDL.h>
+        #include <SDL2/SDL_opengl.h>
+        #include <sys/time.h>
+    #endif
+
+#elif __ANDROID__
+    #include <SDL.h>
+    #include <GLES2/gl2.h>
+    #include <GLES2/gl2ext.h>
 #else
-#include <time.h>
-#include <Windows.h>
-//#define GL_GLEXT_PROTOTYPES
-#include <gl/glew.h>
-#include <gl/Glext.h>
-#include <gl/GL.h>
-#include <gl/GLU.h>
-#include <gl/GLUT.h>
-#include <SDL.h>
-#include <SDL_opengl.h>
-#pragma comment(lib, "opengl32.lib")
-#pragma comment(lib, "glu32.lib")
-#pragma comment(lib, "glew32.lib")
-#pragma comment(lib, "SDL2.lib")
-#pragma comment(lib, "SDL2main.lib")
+    #error "Unknown platform"
 #endif
 
 #include <string>

@@ -10,8 +10,9 @@
 
 #include <stdlib.h>
 
-#include "Sphere.hpp"
 #include "esUtil.hpp"
+#include "Sphere.hpp"
+
 
 
 Sphere::Sphere() : Drawable() {
@@ -114,7 +115,11 @@ void Sphere::drawFrame(ESMatrix* perspective) {
 	// use the program object
 	glUseProgram(userData.programObject);
 	// Load the vertex position
-        glEnableClientState(GL_VERTEX_ARRAY);
+#if TARGET_OS_IPHONE
+#elif __ANDROID__
+#else
+    glEnableClientState(GL_VERTEX_ARRAY);
+#endif
 	glVertexAttribPointer(userData.positionLoc, 3, GL_FLOAT, GL_FALSE,
 			3 * sizeof(GLfloat), userData.vertices);
 	glEnableVertexAttribArray(userData.positionLoc);

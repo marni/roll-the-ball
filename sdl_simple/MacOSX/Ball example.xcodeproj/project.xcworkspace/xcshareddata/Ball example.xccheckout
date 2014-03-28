@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B1B7C241-59AE-400A-AE5C-B3F880DF1DC5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Ball example</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>732FD7DC-6EFE-4E46-A66D-AC1C0C4A4D15</key>
+		<string>ssh://github.com/marni/roll-the-ball.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>sdl_simple/Xcode/Ball example.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>732FD7DC-6EFE-4E46-A66D-AC1C0C4A4D15</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/marni/roll-the-ball.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>732FD7DC-6EFE-4E46-A66D-AC1C0C4A4D15</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>732FD7DC-6EFE-4E46-A66D-AC1C0C4A4D15</string>
+			<key>IDESourceControlWCCName</key>
+			<string>roll-the-ball</string>
+		</dict>
+	</array>
+</dict>
+</plist>

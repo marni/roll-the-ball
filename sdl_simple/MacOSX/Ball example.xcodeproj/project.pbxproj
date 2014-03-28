@@ -1,0 +1,277 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6F447E1518E22F7200273388 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F447E1418E22F7200273388 /* OpenGL.framework */; };
+		6F7F199F18E23B3A00ADDCDF /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F7F199E18E23B3A00ADDCDF /* SDL2.framework */; };
+		6F7F19AD18E23BE000ADDCDF /* Drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F19A018E23BE000ADDCDF /* Drawable.cpp */; };
+		6F7F19AE18E23BE000ADDCDF /* esShapes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F19A218E23BE000ADDCDF /* esShapes.cpp */; };
+		6F7F19AF18E23BE000ADDCDF /* esTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F19A318E23BE000ADDCDF /* esTransform.cpp */; };
+		6F7F19B018E23BE000ADDCDF /* esUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F19A418E23BE000ADDCDF /* esUtil.cpp */; };
+		6F7F19B118E23BE000ADDCDF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F19A618E23BE000ADDCDF /* main.cpp */; };
+		6F7F19B218E23BE000ADDCDF /* Origin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F19A718E23BE000ADDCDF /* Origin.cpp */; };
+		6F7F19B318E23BE000ADDCDF /* Sphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F19A918E23BE000ADDCDF /* Sphere.cpp */; };
+		6F7F19B418E23BE000ADDCDF /* Terrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F19AB18E23BE000ADDCDF /* Terrain.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6F447DED18E22E8E00273388 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		6F447DEF18E22E8E00273388 /* Ball example */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Ball example"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F447E1418E22F7200273388 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		6F7F199E18E23B3A00ADDCDF /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		6F7F19A018E23BE000ADDCDF /* Drawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Drawable.cpp; path = ../Drawable.cpp; sourceTree = "<group>"; };
+		6F7F19A118E23BE000ADDCDF /* Drawable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Drawable.hpp; path = ../Drawable.hpp; sourceTree = "<group>"; };
+		6F7F19A218E23BE000ADDCDF /* esShapes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = esShapes.cpp; path = ../esShapes.cpp; sourceTree = "<group>"; };
+		6F7F19A318E23BE000ADDCDF /* esTransform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = esTransform.cpp; path = ../esTransform.cpp; sourceTree = "<group>"; };
+		6F7F19A418E23BE000ADDCDF /* esUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = esUtil.cpp; path = ../esUtil.cpp; sourceTree = "<group>"; };
+		6F7F19A518E23BE000ADDCDF /* esUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = esUtil.hpp; path = ../esUtil.hpp; sourceTree = "<group>"; };
+		6F7F19A618E23BE000ADDCDF /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../main.cpp; sourceTree = "<group>"; };
+		6F7F19A718E23BE000ADDCDF /* Origin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Origin.cpp; path = ../Origin.cpp; sourceTree = "<group>"; };
+		6F7F19A818E23BE000ADDCDF /* Origin.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Origin.hpp; path = ../Origin.hpp; sourceTree = "<group>"; };
+		6F7F19A918E23BE000ADDCDF /* Sphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Sphere.cpp; path = ../Sphere.cpp; sourceTree = "<group>"; };
+		6F7F19AA18E23BE000ADDCDF /* Sphere.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Sphere.hpp; path = ../Sphere.hpp; sourceTree = "<group>"; };
+		6F7F19AB18E23BE000ADDCDF /* Terrain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Terrain.cpp; path = ../Terrain.cpp; sourceTree = "<group>"; };
+		6F7F19AC18E23BE000ADDCDF /* Terrain.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Terrain.hpp; path = ../Terrain.hpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6F447DEC18E22E8E00273388 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F7F199F18E23B3A00ADDCDF /* SDL2.framework in Frameworks */,
+				6F447E1518E22F7200273388 /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6F447DE618E22E8E00273388 = {
+			isa = PBXGroup;
+			children = (
+				6F7F19A018E23BE000ADDCDF /* Drawable.cpp */,
+				6F7F19A118E23BE000ADDCDF /* Drawable.hpp */,
+				6F7F19A218E23BE000ADDCDF /* esShapes.cpp */,
+				6F7F19A318E23BE000ADDCDF /* esTransform.cpp */,
+				6F7F19A418E23BE000ADDCDF /* esUtil.cpp */,
+				6F7F19A518E23BE000ADDCDF /* esUtil.hpp */,
+				6F7F19A618E23BE000ADDCDF /* main.cpp */,
+				6F7F19A718E23BE000ADDCDF /* Origin.cpp */,
+				6F7F19A818E23BE000ADDCDF /* Origin.hpp */,
+				6F7F19A918E23BE000ADDCDF /* Sphere.cpp */,
+				6F7F19AA18E23BE000ADDCDF /* Sphere.hpp */,
+				6F7F19AB18E23BE000ADDCDF /* Terrain.cpp */,
+				6F7F19AC18E23BE000ADDCDF /* Terrain.hpp */,
+				6F7F199E18E23B3A00ADDCDF /* SDL2.framework */,
+				6F447E1418E22F7200273388 /* OpenGL.framework */,
+				6F447DF018E22E8E00273388 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6F447DF018E22E8E00273388 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6F447DEF18E22E8E00273388 /* Ball example */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6F447DEE18E22E8E00273388 /* Ball example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6F447DF818E22E8E00273388 /* Build configuration list for PBXNativeTarget "Ball example" */;
+			buildPhases = (
+				6F447DEB18E22E8E00273388 /* Sources */,
+				6F447DEC18E22E8E00273388 /* Frameworks */,
+				6F447DED18E22E8E00273388 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Ball example";
+			productName = "roll-the-ball SDL example 1";
+			productReference = 6F447DEF18E22E8E00273388 /* Ball example */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6F447DE718E22E8E00273388 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Mariusz Nowostawski";
+			};
+			buildConfigurationList = 6F447DEA18E22E8E00273388 /* Build configuration list for PBXProject "Ball example" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6F447DE618E22E8E00273388;
+			productRefGroup = 6F447DF018E22E8E00273388 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6F447DEE18E22E8E00273388 /* Ball example */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6F447DEB18E22E8E00273388 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F7F19AD18E23BE000ADDCDF /* Drawable.cpp in Sources */,
+				6F7F19B418E23BE000ADDCDF /* Terrain.cpp in Sources */,
+				6F7F19B218E23BE000ADDCDF /* Origin.cpp in Sources */,
+				6F7F19B018E23BE000ADDCDF /* esUtil.cpp in Sources */,
+				6F7F19AE18E23BE000ADDCDF /* esShapes.cpp in Sources */,
+				6F7F19B318E23BE000ADDCDF /* Sphere.cpp in Sources */,
+				6F7F19B118E23BE000ADDCDF /* main.cpp in Sources */,
+				6F7F19AF18E23BE000ADDCDF /* esTransform.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		6F447DF618E22E8E00273388 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		6F447DF718E22E8E00273388 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		6F447DF918E22E8E00273388 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				PRODUCT_NAME = "Ball example";
+			};
+			name = Debug;
+		};
+		6F447DFA18E22E8E00273388 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				PRODUCT_NAME = "Ball example";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6F447DEA18E22E8E00273388 /* Build configuration list for PBXProject "Ball example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F447DF618E22E8E00273388 /* Debug */,
+				6F447DF718E22E8E00273388 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6F447DF818E22E8E00273388 /* Build configuration list for PBXNativeTarget "Ball example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F447DF918E22E8E00273388 /* Debug */,
+				6F447DFA18E22E8E00273388 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6F447DE718E22E8E00273388 /* Project object */;
+}
