@@ -7,17 +7,12 @@
 		<key>Ball-example.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>6FBF685918E242BB007D889D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6FBF688518E242BB007D889D</key>
+		<key>1D6058900D05DD3D006BFB54</key>
 		<dict>
 			<key>primary</key>
 			<true/>

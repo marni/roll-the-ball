@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6FBF685918E242BB007D889D"
+               BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
                BuildableName = "Ball-example.app"
                BlueprintName = "Ball-example"
                ReferencedContainer = "container:Ball-example.xcodeproj">
@@ -28,21 +28,11 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6FBF688518E242BB007D889D"
-               BuildableName = "Ball-exampleTests.xctest"
-               BlueprintName = "Ball-exampleTests"
-               ReferencedContainer = "container:Ball-example.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6FBF685918E242BB007D889D"
+            BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
             BuildableName = "Ball-example.app"
             BlueprintName = "Ball-example"
             ReferencedContainer = "container:Ball-example.xcodeproj">
@@ -61,7 +51,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6FBF685918E242BB007D889D"
+            BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
             BuildableName = "Ball-example.app"
             BlueprintName = "Ball-example"
             ReferencedContainer = "container:Ball-example.xcodeproj">
@@ -79,7 +69,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6FBF685918E242BB007D889D"
+            BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
             BuildableName = "Ball-example.app"
             BlueprintName = "Ball-example"
             ReferencedContainer = "container:Ball-example.xcodeproj">
