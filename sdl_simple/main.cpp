@@ -192,6 +192,7 @@ static void mainLoop()
             switch( event.type ) {
                 case SDL_KEYDOWN:
                     switch ( event.key.keysym.sym ) {
+                        case SDLK_AC_BACK:
                         case SDLK_ESCAPE:
                             exit(0);
                             break;
