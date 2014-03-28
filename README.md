@@ -1,19 +1,19 @@
-roll-the-ball
-=============
+# roll-the-ball
+
 
 The main idea is to implement a system that allows novel ways of experiencing terrain on mobile devices. The initial task is designed to be: Rolling the ball on a terrain. 
 The project hopes to explore new way of interacting with maps.
 
 
-Educational purpose
-===================
+## Educational purpose
+
 
 This repo is organized as a series of lessons to get going with Android NDK and 
 OpenGL ES programming on Android in a native format.  Try to follow. Any feedback welcome!
 
 
 
-* Example 01
+### Example 01
 
 Getting simple things sorted first.
 
@@ -30,4 +30,15 @@ Getting simple things sorted first.
 
 
 This project contains the skeleton of the OpenGL app, that does nothing. A perfect starting point ;)
+
+
+### Example 02 and 03
+
+This examples show the use of shaders to render a simple scene.
+
+
+
+### sdl_simple
+
+This is initial snapshot that uses SDL2 to render the same scene in a portable fashion so that the code can be cross-compile on all SDL supported platforms. The folder contains projects for Windows, MacOSX, iOS and Android.
 
