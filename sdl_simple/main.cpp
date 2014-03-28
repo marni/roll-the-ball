@@ -10,39 +10,30 @@
 
 #include "esUtil.hpp"
 
-#ifdef __APPLE__
-    #include "TargetConditionals.h"
-    #if TARGET_OS_IPHONE
-        #include "SDL.h"
-        #include "SDL_opengles2.h"
-    #else
-        #include <SDL2/SDL.h>
-        #include <SDL2/SDL_opengles2.h>
-    #endif
-#elif _WIN64
-    #include <SDL.h>
-    #include <SDL_opengl.h>
-    #include <gl/GL.h>
-    #include <gl/GLU.h>
-    #pragma comment(lib, "SDL2.lib")
-    #pragma comment(lib, "SDL2main.lib")
-    #pragma comment(lib, "OpenGL32.lib")
-    #pragma comment(lib, "glu32.lib")
-#endif
-
-
 #include "Origin.hpp"
 #include "Sphere.hpp"
 #include "Terrain.hpp"
 
+//#define WIDTH  640
+//#define HEIGHT 480
 
-#define WIDTH  640
-#define HEIGHT 480
+#define SINT16_MAX ((float)(0x7FFF))
+
+/*  If we aren't on an iPhone, then this definition ought to yield reasonable behavior */
+#ifndef SDL_IPHONE_MAX_GFORCE
+#define SDL_IPHONE_MAX_GFORCE 5.0f
+#endif
 
 
 Origin origin;
 Terrain terrain;
 Sphere sphere;
+
+
+SDL_Window* window;
+SDL_Joystick* joystick;
+
+
 
 
 ESMatrix perspective;
@@ -60,10 +51,30 @@ void cleanup()
 	terrain.cleanup();
 }
 
-SDL_Window* window;
+
 
 void drawFrame()
 {
+    float ax = SDL_JoystickGetAxis(joystick, 0);
+    float ay = SDL_JoystickGetAxis(joystick, 1);
+
+    
+    /* update velocity from accelerometer
+     the factor SDL_IPHONE_MAX_G_FORCE / SINT16_MAX converts between
+     SDL's units reported from the joytick, and units of g-force, as reported by the accelerometer
+     */
+    
+    float axm = 1.0f;
+    float aym = 1.0f;
+    
+#if TARGET_OS_IPHONE || __ANDROID__
+    axm = 5 * SDL_IPHONE_MAX_GFORCE / SINT16_MAX;
+    aym = 5 * SDL_IPHONE_MAX_GFORCE / SINT16_MAX;
+#endif
+    
+    pitch += ay * aym;
+    yaw += ax * axm;
+
 	glClear(GL_COLOR_BUFFER_BIT);
 	glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
     
@@ -106,27 +117,37 @@ void setupWindow(int width, int height)
 
 static void setupSDL()
 {
-    if ( SDL_Init(SDL_INIT_VIDEO|SDL_INIT_EVENTS|SDL_INIT_JOYSTICK) < 0 ) {
+    if ( SDL_Init(SDL_INIT_VIDEO|SDL_INIT_EVENTS|SDL_INIT_JOYSTICK ) < 0 ) {
         fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
         exit(1);
+    }
+    
+    joystick = SDL_JoystickOpen(0);
+    if (joystick == NULL) {
+        fprintf(stderr, "No joystick found\n");
     }
     
     /* Quit SDL properly on exit */
     atexit(SDL_Quit);
     
     /* Get the current video information */
-    window = SDL_CreateWindow("Roll the ball", 0, 0, WIDTH, HEIGHT, SDL_WINDOW_OPENGL);
+    window = SDL_CreateWindow("Roll the ball",
+                              SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+                              0, 0,
+                              SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN_DESKTOP);
     if (window == NULL) {
         fprintf(stderr, "Couldn't get video information: %s\n", SDL_GetError());
         exit(1);
     }
     
+    
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
-    /* Set the minimum requirements for the OpenGL window
-    SDL_GL_SetAttribute( SDL_GL_RED_SIZE, 5 );
-    SDL_GL_SetAttribute( SDL_GL_GREEN_SIZE, 5 );
-    SDL_GL_SetAttribute( SDL_GL_BLUE_SIZE, 5 );
+    /* 
+     Set the minimum requirements for the OpenGL window
+     SDL_GL_SetAttribute( SDL_GL_RED_SIZE, 5 );
+     SDL_GL_SetAttribute( SDL_GL_GREEN_SIZE, 5 );
+     SDL_GL_SetAttribute( SDL_GL_BLUE_SIZE, 5 );
     */
     SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 24 );
     SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
@@ -154,15 +175,18 @@ static void setupSDL()
 
 static void setupOpenGL()
 {
-    setupWindow(WIDTH, HEIGHT);
+    int w,h;
+    SDL_GetWindowSize(window, &w, &h);
+    setupWindow(w, h);
 }
 
 
 static void mainLoop()
 {
     SDL_Event event;
+    bool running = true;
     
-    while (1) {
+    while (running) {
         /* process pending events */
         while( SDL_PollEvent( &event ) ) {
             switch( event.type ) {
@@ -178,14 +202,14 @@ static void mainLoop()
                             break;
                     }
                     break;
-                    
+            /**
                 case SDL_MOUSEMOTION:
                     pitch += event.motion.yrel;
                     yaw += event.motion.xrel;
                     break;
-                    
+             **/
                 case SDL_QUIT:
-                    exit (0);
+                    running = false;
                     break;
             }
         }
@@ -196,6 +220,9 @@ static void mainLoop()
         /* Wait 50ms to avoid using up all the CPU time */
         SDL_Delay( 50 );
     }
+    
+    SDL_DestroyWindow(window);
+    SDL_Quit();
 }
 
 
