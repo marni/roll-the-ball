@@ -32,7 +32,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		6F447DEF18E22E8E00273388 /* Ball example */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Ball example"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F447DEF18E22E8E00273388 /* Ball simple */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Ball simple"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F447E1418E22F7200273388 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		6F7F199E18E23B3A00ADDCDF /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		6F7F19A018E23BE000ADDCDF /* Drawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Drawable.cpp; path = ../Drawable.cpp; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 		6F447DF018E22E8E00273388 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6F447DEF18E22E8E00273388 /* Ball example */,
+				6F447DEF18E22E8E00273388 /* Ball simple */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,9 +96,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6F447DEE18E22E8E00273388 /* Ball example */ = {
+		6F447DEE18E22E8E00273388 /* Ball simple */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6F447DF818E22E8E00273388 /* Build configuration list for PBXNativeTarget "Ball example" */;
+			buildConfigurationList = 6F447DF818E22E8E00273388 /* Build configuration list for PBXNativeTarget "Ball simple" */;
 			buildPhases = (
 				6F447DEB18E22E8E00273388 /* Sources */,
 				6F447DEC18E22E8E00273388 /* Frameworks */,
@@ -108,9 +108,9 @@
 			);
 			dependencies = (
 			);
-			name = "Ball example";
+			name = "Ball simple";
 			productName = "roll-the-ball SDL example 1";
-			productReference = 6F447DEF18E22E8E00273388 /* Ball example */;
+			productReference = 6F447DEF18E22E8E00273388 /* Ball simple */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -122,7 +122,7 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Mariusz Nowostawski";
 			};
-			buildConfigurationList = 6F447DEA18E22E8E00273388 /* Build configuration list for PBXProject "Ball example" */;
+			buildConfigurationList = 6F447DEA18E22E8E00273388 /* Build configuration list for PBXProject "Ball simple" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -134,7 +134,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6F447DEE18E22E8E00273388 /* Ball example */,
+				6F447DEE18E22E8E00273388 /* Ball simple */,
 			);
 		};
 /* End PBXProject section */
@@ -235,7 +235,7 @@
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
-				PRODUCT_NAME = "Ball example";
+				PRODUCT_NAME = "Ball simple";
 			};
 			name = Debug;
 		};
@@ -246,14 +246,14 @@
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
-				PRODUCT_NAME = "Ball example";
+				PRODUCT_NAME = "Ball simple";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6F447DEA18E22E8E00273388 /* Build configuration list for PBXProject "Ball example" */ = {
+		6F447DEA18E22E8E00273388 /* Build configuration list for PBXProject "Ball simple" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6F447DF618E22E8E00273388 /* Debug */,
@@ -262,7 +262,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6F447DF818E22E8E00273388 /* Build configuration list for PBXNativeTarget "Ball example" */ = {
+		6F447DF818E22E8E00273388 /* Build configuration list for PBXNativeTarget "Ball simple" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6F447DF918E22E8E00273388 /* Debug */,
