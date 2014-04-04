@@ -31,6 +31,7 @@
         #include "SDL.h"
         #include "SDL_opengles2.h"
         #include <time.h>
+        #define TARGET_MOBILE 1
     #elif TARGET_OS_MAC
         // We assume have a Mac OSX
         #include <SDL2/SDL.h>
@@ -42,6 +43,7 @@
     #include <SDL.h>
     #include <GLES2/gl2.h>
     #include <GLES2/gl2ext.h>
+    #define TARGET_MOBILE 1
 #else
     #error "Unknown platform"
 #endif

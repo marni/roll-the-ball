@@ -131,10 +131,18 @@ static void setupSDL()
     atexit(SDL_Quit);
     
     /* Get the current video information */
+    Uint32 WINDOW_FLAGS = 0;
+    
+#ifdef TARGET_MOBILE
+    WINDOW_FLAGS = SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN_DESKTOP;
+#else
+    WINDOW_FLAGS = SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN;
+#endif
+    
     window = SDL_CreateWindow("Roll the ball",
                               SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-                              0, 0,
-                              SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN_DESKTOP);
+                              0, 0, WINDOW_FLAGS);
+
     if (window == NULL) {
         fprintf(stderr, "Couldn't get video information: %s\n", SDL_GetError());
         exit(1);
