@@ -16,16 +16,22 @@ class Application
 {
     
 public:
+    
     Application();
     virtual ~Application();
     
     void onInit();
-    void startEventLoop();
+    void startMainLoop();
     void onClose();
 
+    
 private:
+    
+    sf::Window* window;
     Renderer* renderer;
     Scene* scene;
+    
+    void initializeWindow();
     
 };
 

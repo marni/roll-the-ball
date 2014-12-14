@@ -9,6 +9,8 @@
 #ifndef __terrain_demo__scene__
 #define __terrain_demo__scene__
 
+#include "hgtloader.h"
+
 class Scene
 {
     
@@ -18,6 +20,10 @@ public:
     ~Scene();
     
     void createScene();
+    
+private:
+    
+    const HGT_Array* heightdata;
     
 };
 

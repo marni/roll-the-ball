@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F7AEEE01A3DAE4300D62C38 /* N60E010.hgt in Resources */ = {isa = PBXBuildFile; fileRef = 6F7AEEDF1A3DAE4300D62C38 /* N60E010.hgt */; };
+		6F7AEEE31A3DAE6F00D62C38 /* hgtloader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7AEEE11A3DAE6F00D62C38 /* hgtloader.cpp */; };
+		6F7AEEE51A3DF2A800D62C38 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F7AEEE41A3DF2A800D62C38 /* OpenGL.framework */; };
 		6FB2D3661A3CF42C00DD813B /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6FB2D3651A3CF42C00DD813B /* ResourcePath.mm */; };
 		6FB2D3691A3CF42C00DD813B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FB2D3681A3CF42C00DD813B /* main.cpp */; };
 		6FB2D36E1A3CF42C00DD813B /* nice_music.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 6FB2D36D1A3CF42C00DD813B /* nice_music.ogg */; };
@@ -19,6 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6F7AEEDF1A3DAE4300D62C38 /* N60E010.hgt */ = {isa = PBXFileReference; lastKnownFileType = file; name = N60E010.hgt; path = ../../geodata/N60E010.hgt; sourceTree = "<group>"; };
+		6F7AEEE11A3DAE6F00D62C38 /* hgtloader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hgtloader.cpp; sourceTree = "<group>"; };
+		6F7AEEE21A3DAE6F00D62C38 /* hgtloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hgtloader.h; sourceTree = "<group>"; };
+		6F7AEEE41A3DF2A800D62C38 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		6FB2D3601A3CF42C00DD813B /* terrain-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "terrain-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FB2D3641A3CF42C00DD813B /* terrain-demo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "terrain-demo-Info.plist"; sourceTree = "<group>"; };
 		6FB2D3651A3CF42C00DD813B /* ResourcePath.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
@@ -42,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F7AEEE51A3DF2A800D62C38 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +59,7 @@
 		6FB2D3561A3CF42C00DD813B = {
 			isa = PBXGroup;
 			children = (
+				6F7AEEE41A3DF2A800D62C38 /* OpenGL.framework */,
 				6FB2D3621A3CF42C00DD813B /* terrain-demo */,
 				6FB2D3611A3CF42C00DD813B /* Products */,
 			);
@@ -80,6 +89,8 @@
 				6FB2D37F1A3CFB6800DD813B /* drawable.h */,
 				6FB2D3811A3D020900DD813B /* scene.cpp */,
 				6FB2D3821A3D020900DD813B /* scene.h */,
+				6F7AEEE11A3DAE6F00D62C38 /* hgtloader.cpp */,
+				6F7AEEE21A3DAE6F00D62C38 /* hgtloader.h */,
 			);
 			path = "terrain-demo";
 			sourceTree = "<group>";
@@ -95,6 +106,7 @@
 		6FB2D36A1A3CF42C00DD813B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6F7AEEDF1A3DAE4300D62C38 /* N60E010.hgt */,
 				6FB2D36D1A3CF42C00DD813B /* nice_music.ogg */,
 				6FB2D36F1A3CF42C00DD813B /* sansation.ttf */,
 				6FB2D3711A3CF42C00DD813B /* icon.png */,
@@ -161,6 +173,7 @@
 			files = (
 				6FB2D3721A3CF42C00DD813B /* icon.png in Resources */,
 				6FB2D3701A3CF42C00DD813B /* sansation.ttf in Resources */,
+				6F7AEEE01A3DAE4300D62C38 /* N60E010.hgt in Resources */,
 				6FB2D36E1A3CF42C00DD813B /* nice_music.ogg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -192,6 +205,7 @@
 				6FB2D3691A3CF42C00DD813B /* main.cpp in Sources */,
 				6FB2D3801A3CFB6800DD813B /* drawable.cpp in Sources */,
 				6FB2D3661A3CF42C00DD813B /* ResourcePath.mm in Sources */,
+				6F7AEEE31A3DAE6F00D62C38 /* hgtloader.cpp in Sources */,
 				6FB2D3831A3D020900DD813B /* scene.cpp in Sources */,
 				6FB2D37A1A3CF72E00DD813B /* application.cpp in Sources */,
 			);
@@ -325,6 +339,7 @@
 				6FB2D3771A3CF42C00DD813B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

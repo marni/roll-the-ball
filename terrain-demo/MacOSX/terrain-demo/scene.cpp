@@ -7,21 +7,23 @@
 //
 
 #include "scene.h"
+#include "hgtloader.h"
+
 
 
 Scene::Scene()
 {
-    
+    heightdata = loadHeightArray("N60E010.hgt");
 }
 
 
 Scene::~Scene()
 {
-    
+    delete heightdata;
 }
 
 
 void Scene::createScene()
 {
-    
+
 }

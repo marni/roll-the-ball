@@ -24,26 +24,8 @@ public:
     Renderer();
     ~Renderer();
     
-    void onInit(Scene*);
-    void notifyClose();
-    void onClose();
-    
-    sf::Window* getWindowHandle();
-    
-    bool isAppRunning;
-
-    void drawScene();
-    
-    
-protected:
-    void draw(Drawable*);
-    
-    
-    
-private:
-    Scene* scene;
-    sf::Window *window;
-
+    void onInit();
+    void draw(sf::Window*, Drawable*);
 
 };
 

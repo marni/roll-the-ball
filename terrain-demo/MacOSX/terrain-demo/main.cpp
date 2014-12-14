@@ -10,7 +10,7 @@ int main(int, char const**)
 {
     Application *app = new Application();
     app->onInit();
-    app->startEventLoop();
+    app->startMainLoop();
     app->onClose();
     
     delete app;
