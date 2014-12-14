@@ -1,15 +1,16 @@
 # roll-the-ball
 
 
-The main idea is to implement a system that allows novel ways of experiencing terrain on mobile devices. The initial task is designed to be: Rolling the ball on a terrain. 
-The project hopes to explore new way of interacting with maps.
+How can a map or terrain visualisation be done interactive on a mobile devices? 
+This project is an exploration into terrain visualisation techniques and interactivity. 
 
 
-## Educational purpose
 
+## Folders structure
 
-This repo is organized as a series of lessons to get going with Android NDK and 
-OpenGL ES programming on Android in a native format.  Try to follow. Any feedback welcome!
+The initial folders example01 to example03 can be treated as a series of simple lessons to get 
+going with Android NDK and  OpenGL ES programming on Android in a native format.  
+Any feedback welcome!
 
 
 
@@ -40,5 +41,11 @@ This examples show the use of shaders to render a simple scene.
 
 ### sdl_simple
 
-This is initial snapshot that uses SDL2 to render the same scene in a portable fashion so that the code can be cross-compile on all SDL supported platforms. The folder contains projects for Windows, MacOSX, iOS and Android.
+This is initial snapshot that uses SDL2 to render the same scene in a portable fashion so that the code can be cross-compile on all SDL supported platforms. 
+The folder contains projects for Windows, MacOSX, iOS and Android.  It has been a proof-of-concept to demo the ability for cross-platform compilation.
+
+
+### terrain_demo
+
+This is an SFML-based demo.
 
