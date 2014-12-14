@@ -7,41 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F529A741A3E0C4B003CCA2F /* scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F529A691A3E0C4B003CCA2F /* scene.cpp */; };
+		6F529A751A3E0C4B003CCA2F /* renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F529A6C1A3E0C4B003CCA2F /* renderer.cpp */; };
+		6F529A761A3E0C4B003CCA2F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F529A6D1A3E0C4B003CCA2F /* main.cpp */; };
+		6F529A771A3E0C4B003CCA2F /* hgtloader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F529A6F1A3E0C4B003CCA2F /* hgtloader.cpp */; };
+		6F529A781A3E0C4B003CCA2F /* drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F529A711A3E0C4B003CCA2F /* drawable.cpp */; };
+		6F529A791A3E0C4B003CCA2F /* application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F529A731A3E0C4B003CCA2F /* application.cpp */; };
 		6F7AEEE01A3DAE4300D62C38 /* N60E010.hgt in Resources */ = {isa = PBXBuildFile; fileRef = 6F7AEEDF1A3DAE4300D62C38 /* N60E010.hgt */; };
-		6F7AEEE31A3DAE6F00D62C38 /* hgtloader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7AEEE11A3DAE6F00D62C38 /* hgtloader.cpp */; };
 		6F7AEEE51A3DF2A800D62C38 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F7AEEE41A3DF2A800D62C38 /* OpenGL.framework */; };
 		6FB2D3661A3CF42C00DD813B /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6FB2D3651A3CF42C00DD813B /* ResourcePath.mm */; };
-		6FB2D3691A3CF42C00DD813B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FB2D3681A3CF42C00DD813B /* main.cpp */; };
 		6FB2D36E1A3CF42C00DD813B /* nice_music.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 6FB2D36D1A3CF42C00DD813B /* nice_music.ogg */; };
 		6FB2D3701A3CF42C00DD813B /* sansation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FB2D36F1A3CF42C00DD813B /* sansation.ttf */; };
 		6FB2D3721A3CF42C00DD813B /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FB2D3711A3CF42C00DD813B /* icon.png */; };
-		6FB2D37A1A3CF72E00DD813B /* application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FB2D3781A3CF72E00DD813B /* application.cpp */; };
-		6FB2D37D1A3CFAB600DD813B /* renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FB2D37B1A3CFAB600DD813B /* renderer.cpp */; };
-		6FB2D3801A3CFB6800DD813B /* drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FB2D37E1A3CFB6800DD813B /* drawable.cpp */; };
-		6FB2D3831A3D020900DD813B /* scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FB2D3811A3D020900DD813B /* scene.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6F529A681A3E0C4B003CCA2F /* scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scene.h; path = ../../src/scene.h; sourceTree = "<group>"; };
+		6F529A691A3E0C4B003CCA2F /* scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scene.cpp; path = ../../src/scene.cpp; sourceTree = "<group>"; };
+		6F529A6A1A3E0C4B003CCA2F /* ResourcePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResourcePath.h; path = ../../src/ResourcePath.h; sourceTree = "<group>"; };
+		6F529A6B1A3E0C4B003CCA2F /* renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = renderer.h; path = ../../src/renderer.h; sourceTree = "<group>"; };
+		6F529A6C1A3E0C4B003CCA2F /* renderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = renderer.cpp; path = ../../src/renderer.cpp; sourceTree = "<group>"; };
+		6F529A6D1A3E0C4B003CCA2F /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../src/main.cpp; sourceTree = "<group>"; };
+		6F529A6E1A3E0C4B003CCA2F /* hgtloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hgtloader.h; path = ../../src/hgtloader.h; sourceTree = "<group>"; };
+		6F529A6F1A3E0C4B003CCA2F /* hgtloader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hgtloader.cpp; path = ../../src/hgtloader.cpp; sourceTree = "<group>"; };
+		6F529A701A3E0C4B003CCA2F /* drawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = drawable.h; path = ../../src/drawable.h; sourceTree = "<group>"; };
+		6F529A711A3E0C4B003CCA2F /* drawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = drawable.cpp; path = ../../src/drawable.cpp; sourceTree = "<group>"; };
+		6F529A721A3E0C4B003CCA2F /* application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = application.h; path = ../../src/application.h; sourceTree = "<group>"; };
+		6F529A731A3E0C4B003CCA2F /* application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = application.cpp; path = ../../src/application.cpp; sourceTree = "<group>"; };
 		6F7AEEDF1A3DAE4300D62C38 /* N60E010.hgt */ = {isa = PBXFileReference; lastKnownFileType = file; name = N60E010.hgt; path = ../../geodata/N60E010.hgt; sourceTree = "<group>"; };
-		6F7AEEE11A3DAE6F00D62C38 /* hgtloader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hgtloader.cpp; sourceTree = "<group>"; };
-		6F7AEEE21A3DAE6F00D62C38 /* hgtloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hgtloader.h; sourceTree = "<group>"; };
 		6F7AEEE41A3DF2A800D62C38 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		6FB2D3601A3CF42C00DD813B /* terrain-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "terrain-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FB2D3641A3CF42C00DD813B /* terrain-demo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "terrain-demo-Info.plist"; sourceTree = "<group>"; };
 		6FB2D3651A3CF42C00DD813B /* ResourcePath.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
-		6FB2D3671A3CF42C00DD813B /* ResourcePath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResourcePath.h; sourceTree = "<group>"; };
-		6FB2D3681A3CF42C00DD813B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		6FB2D36D1A3CF42C00DD813B /* nice_music.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = nice_music.ogg; sourceTree = "<group>"; };
 		6FB2D36F1A3CF42C00DD813B /* sansation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sansation.ttf; sourceTree = "<group>"; };
 		6FB2D3711A3CF42C00DD813B /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		6FB2D3781A3CF72E00DD813B /* application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = application.cpp; sourceTree = "<group>"; };
-		6FB2D3791A3CF72E00DD813B /* application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = application.h; sourceTree = "<group>"; };
-		6FB2D37B1A3CFAB600DD813B /* renderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = renderer.cpp; sourceTree = "<group>"; };
-		6FB2D37C1A3CFAB600DD813B /* renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = renderer.h; sourceTree = "<group>"; };
-		6FB2D37E1A3CFB6800DD813B /* drawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drawable.cpp; sourceTree = "<group>"; };
-		6FB2D37F1A3CFB6800DD813B /* drawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = drawable.h; sourceTree = "<group>"; };
-		6FB2D3811A3D020900DD813B /* scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scene.cpp; sourceTree = "<group>"; };
-		6FB2D3821A3D020900DD813B /* scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scene.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +56,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F529A671A3E0C29003CCA2F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				6F529A681A3E0C4B003CCA2F /* scene.h */,
+				6F529A691A3E0C4B003CCA2F /* scene.cpp */,
+				6F529A6A1A3E0C4B003CCA2F /* ResourcePath.h */,
+				6F529A6B1A3E0C4B003CCA2F /* renderer.h */,
+				6F529A6C1A3E0C4B003CCA2F /* renderer.cpp */,
+				6F529A6D1A3E0C4B003CCA2F /* main.cpp */,
+				6F529A6E1A3E0C4B003CCA2F /* hgtloader.h */,
+				6F529A6F1A3E0C4B003CCA2F /* hgtloader.cpp */,
+				6F529A701A3E0C4B003CCA2F /* drawable.h */,
+				6F529A711A3E0C4B003CCA2F /* drawable.cpp */,
+				6F529A721A3E0C4B003CCA2F /* application.h */,
+				6F529A731A3E0C4B003CCA2F /* application.cpp */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
 		6FB2D3561A3CF42C00DD813B = {
 			isa = PBXGroup;
 			children = (
@@ -76,21 +95,10 @@
 		6FB2D3621A3CF42C00DD813B /* terrain-demo */ = {
 			isa = PBXGroup;
 			children = (
+				6F529A671A3E0C29003CCA2F /* src */,
 				6FB2D3651A3CF42C00DD813B /* ResourcePath.mm */,
-				6FB2D3671A3CF42C00DD813B /* ResourcePath.h */,
-				6FB2D3681A3CF42C00DD813B /* main.cpp */,
 				6FB2D36A1A3CF42C00DD813B /* Resources */,
 				6FB2D3631A3CF42C00DD813B /* Supporting Files */,
-				6FB2D3781A3CF72E00DD813B /* application.cpp */,
-				6FB2D3791A3CF72E00DD813B /* application.h */,
-				6FB2D37B1A3CFAB600DD813B /* renderer.cpp */,
-				6FB2D37C1A3CFAB600DD813B /* renderer.h */,
-				6FB2D37E1A3CFB6800DD813B /* drawable.cpp */,
-				6FB2D37F1A3CFB6800DD813B /* drawable.h */,
-				6FB2D3811A3D020900DD813B /* scene.cpp */,
-				6FB2D3821A3D020900DD813B /* scene.h */,
-				6F7AEEE11A3DAE6F00D62C38 /* hgtloader.cpp */,
-				6F7AEEE21A3DAE6F00D62C38 /* hgtloader.h */,
 			);
 			path = "terrain-demo";
 			sourceTree = "<group>";
@@ -201,13 +209,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FB2D37D1A3CFAB600DD813B /* renderer.cpp in Sources */,
-				6FB2D3691A3CF42C00DD813B /* main.cpp in Sources */,
-				6FB2D3801A3CFB6800DD813B /* drawable.cpp in Sources */,
+				6F529A771A3E0C4B003CCA2F /* hgtloader.cpp in Sources */,
+				6F529A741A3E0C4B003CCA2F /* scene.cpp in Sources */,
+				6F529A751A3E0C4B003CCA2F /* renderer.cpp in Sources */,
+				6F529A781A3E0C4B003CCA2F /* drawable.cpp in Sources */,
+				6F529A761A3E0C4B003CCA2F /* main.cpp in Sources */,
+				6F529A791A3E0C4B003CCA2F /* application.cpp in Sources */,
 				6FB2D3661A3CF42C00DD813B /* ResourcePath.mm in Sources */,
-				6F7AEEE31A3DAE6F00D62C38 /* hgtloader.cpp in Sources */,
-				6FB2D3831A3D020900DD813B /* scene.cpp in Sources */,
-				6FB2D37A1A3CF72E00DD813B /* application.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
