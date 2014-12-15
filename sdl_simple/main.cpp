@@ -147,10 +147,15 @@ static void setupSDL()
         fprintf(stderr, "Couldn't get video information: %s\n", SDL_GetError());
         exit(1);
     }
-    
+    /* setting up SDL2 to use 4.1 on MacOSX
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
+    */
     
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+    
     /* 
      Set the minimum requirements for the OpenGL window
      SDL_GL_SetAttribute( SDL_GL_RED_SIZE, 5 );

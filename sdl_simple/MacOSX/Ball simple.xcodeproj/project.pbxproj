@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6F447E1518E22F7200273388 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F447E1418E22F7200273388 /* OpenGL.framework */; };
-		6F7F199F18E23B3A00ADDCDF /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F7F199E18E23B3A00ADDCDF /* SDL2.framework */; };
+		6F529A821A3E532C003CCA2F /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F529A811A3E532C003CCA2F /* SDL2.framework */; };
 		6F7F19AD18E23BE000ADDCDF /* Drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F19A018E23BE000ADDCDF /* Drawable.cpp */; };
 		6F7F19AE18E23BE000ADDCDF /* esShapes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F19A218E23BE000ADDCDF /* esShapes.cpp */; };
 		6F7F19AF18E23BE000ADDCDF /* esTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F19A318E23BE000ADDCDF /* esTransform.cpp */; };
@@ -34,7 +34,7 @@
 /* Begin PBXFileReference section */
 		6F447DEF18E22E8E00273388 /* Ball simple */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Ball simple"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F447E1418E22F7200273388 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
-		6F7F199E18E23B3A00ADDCDF /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		6F529A811A3E532C003CCA2F /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		6F7F19A018E23BE000ADDCDF /* Drawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Drawable.cpp; path = ../Drawable.cpp; sourceTree = "<group>"; };
 		6F7F19A118E23BE000ADDCDF /* Drawable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Drawable.hpp; path = ../Drawable.hpp; sourceTree = "<group>"; };
 		6F7F19A218E23BE000ADDCDF /* esShapes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = esShapes.cpp; path = ../esShapes.cpp; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F7F199F18E23B3A00ADDCDF /* SDL2.framework in Frameworks */,
+				6F529A821A3E532C003CCA2F /* SDL2.framework in Frameworks */,
 				6F447E1518E22F7200273388 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,7 +79,7 @@
 				6F7F19AA18E23BE000ADDCDF /* Sphere.hpp */,
 				6F7F19AB18E23BE000ADDCDF /* Terrain.cpp */,
 				6F7F19AC18E23BE000ADDCDF /* Terrain.hpp */,
-				6F7F199E18E23B3A00ADDCDF /* SDL2.framework */,
+				6F529A811A3E532C003CCA2F /* SDL2.framework */,
 				6F447E1418E22F7200273388 /* OpenGL.framework */,
 				6F447DF018E22E8E00273388 /* Products */,
 			);
@@ -236,6 +236,7 @@
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
 				PRODUCT_NAME = "Ball simple";
+				SDKROOT = macosx10.9;
 			};
 			name = Debug;
 		};
@@ -247,6 +248,7 @@
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
 				PRODUCT_NAME = "Ball simple";
+				SDKROOT = macosx10.9;
 			};
 			name = Release;
 		};
