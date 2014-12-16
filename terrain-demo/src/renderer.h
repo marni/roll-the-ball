@@ -9,10 +9,9 @@
 #ifndef __terrain_demo__renderer__
 #define __terrain_demo__renderer__
 
-#include <SFML/Graphics.hpp>
-
 #include "drawable.h"
 #include "scene.h"
+#include "glshaders.h"
 
 
 
@@ -25,7 +24,17 @@ public:
     ~Renderer();
     
     void onInit();
-    void draw(sf::Window*, Drawable*);
+    void onClose();
+    
+    void draw();
+    
+private:
+    
+    Scene* scene;
+    
+    GLProgram* terrainProgram;
+    GLShader* terrainVertShader;
+    GLShader* terrainFragShader;
 
 };
 

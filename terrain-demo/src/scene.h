@@ -9,9 +9,13 @@
 #ifndef __terrain_demo__scene__
 #define __terrain_demo__scene__
 
+#include "drawable.h"
 #include "hgtloader.h"
 
-class Scene
+#include <OpenGL/gl3.h>
+
+
+class Scene : public Drawable
 {
     
 public:
@@ -19,12 +23,18 @@ public:
     Scene();
     ~Scene();
     
-    void createScene();
+    void onInit();
+    void draw();
     
 private:
     
     const HGT_Array* heightdata;
     
+    int indexCount;
+    int PrimitiveRestartIndex;
+    
+    GLuint vaoId;
+
 };
 
 #endif /* defined(__terrain_demo__scene__) */

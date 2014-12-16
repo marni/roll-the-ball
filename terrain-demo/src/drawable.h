@@ -16,6 +16,9 @@ public:
     
     Drawable();
     virtual ~Drawable();
+    
+    virtual void onInit() = 0;
+    virtual void draw() = 0;
         
 };
 

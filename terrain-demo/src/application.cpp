@@ -8,7 +8,7 @@
 
 #include <iostream>
 #include <SFML/Audio.hpp>
-#include <SFML/OpenGL.hpp>
+#include <OpenGL/gl3.h>
 
 #include "ResourcePath.h"
 
@@ -19,22 +19,20 @@
 Application::Application()
 {
     renderer = new Renderer();
-    scene = new Scene();
 }
 
 Application::~Application()
 {
     delete renderer;
-    delete scene;
     delete window;
 }
 
 
 void Application::onInit()
 {
-    // create the scene
-    scene->createScene();
+    // setup Open GL context, and window
     initializeWindow();
+
     // initialize the renderer
     renderer->onInit();
 }
@@ -42,7 +40,7 @@ void Application::onInit()
 
 void Application::onClose()
 {
-    
+    renderer->onClose();
 }
 
 
@@ -55,11 +53,13 @@ void Application::startMainLoop()
     }
     
     // Play the music
-    music.play();
+    //music.play();
     
     // Start the event loop
     bool isAppRunning = window->isOpen();
     
+    glClearColor(0.65f, 0.65f, 0.65f, 0.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     while (isAppRunning) {        
         // Process events
         sf::Event event;
@@ -77,16 +77,16 @@ void Application::startMainLoop()
         }
         
         // clear the buffers
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT);
         
         // RENDER THE SCENE
-        renderer->draw(window, nullptr);
+        renderer->draw();
         
         // swap the buffers
         window->display();
     }
     
-    // we finished the event loop
+    // we finished the event loop, so we shut down the app
     window->close();
 }
 
@@ -97,13 +97,14 @@ void Application::initializeWindow()
     sf::ContextSettings settings;
     settings.depthBits = 24;
     settings.stencilBits = 8;
-    settings.antialiasingLevel = 4;
     settings.majorVersion = 3;
-    settings.minorVersion = 0;
+    settings.minorVersion = 2;
     
     // Create the main window
-    window = new sf::Window(sf::VideoMode(800, 600), "Terrain Demo", sf::Style::Default, settings);
+    window = new sf::RenderWindow(sf::VideoMode(800, 600, 24), "Terrain Demo", sf::Style::Titlebar | sf::Style::Close, settings);
     window->setVerticalSyncEnabled(true);
+    window->setActive();
+    
     settings = window->getSettings();
     
     std::cout << "depth bits:" << settings.depthBits << std::endl;
@@ -117,5 +118,6 @@ void Application::initializeWindow()
         return EXIT_FAILURE;
     }
     window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+
 }
 

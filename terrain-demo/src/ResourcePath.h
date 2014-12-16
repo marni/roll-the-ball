@@ -30,14 +30,24 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <string>
+#include <vector>
 
 ////////////////////////////////////////////////////////////
 /// \brief Return the path to the resource folder.
 ///
 /// \return The path to the resource folder associate
 /// with the main bundle or an empty string is there is no bundle.
-///
 ////////////////////////////////////////////////////////////
 std::string resourcePath(void);
+
+
+////////////////////////////////////////////////////////////
+/// \brief reads a given text file from the resource folder
+/// and returns the vector of strings (lines) from a file.
+///
+/// \return TRUE if succesful
+////////////////////////////////////////////////////////////
+
+bool readFile(std::string, std::vector<std::string>*);
 
 #endif

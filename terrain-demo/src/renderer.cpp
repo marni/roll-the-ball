@@ -7,31 +7,71 @@
 //
 
 #include "renderer.h"
+#include "glshaders.h"
 
 #include "ResourcePath.h"
 
-#include <iostream>
-#include <thread>
+#include <OpenGL/gl3.h>
+#include <glm/glm.hpp>
 
-#include <SFML/OpenGL.hpp>
+#include <iostream>
+#include <vector>
+
+using std::vector;
+
 
 
 Renderer::Renderer()
 {
+    terrainVertShader = new GLShader();
+    terrainFragShader = new GLShader();
+    terrainProgram = new GLProgram();
 }
 
 
 Renderer::~Renderer()
 {
+    delete terrainVertShader;
+    delete terrainFragShader;
+    delete terrainProgram;
+    
+    delete scene;
 }
 
 
 void Renderer::onInit()
 {
+    scene = new Scene();
+    terrainProgram->create();
+    if (!terrainVertShader->loadFromFile("terrain.vert", GL_VERTEX_SHADER)) {
+        std::cerr << "[ERROR][Renderer] Failed to load terrain.vert shader." << std::endl;
+    }
+    if (!terrainFragShader->loadFromFile("terrain.frag", GL_FRAGMENT_SHADER)) {
+        std::cerr << "[ERROR][Renderer] Failed to load terrain.frag shader." << std::endl;
+    }
+    terrainProgram->addShader(terrainVertShader);
+    terrainProgram->addShader(terrainFragShader);
+    
+    if (!terrainProgram->linkShaders()) {
+        std::cerr << "[ERROR][Renderer] Failed to link the program!" << std::endl;
+    }
+    terrainProgram->useProgram();
+    
+    // create the scene
+    scene->onInit();
 }
 
 
-void Renderer::draw(sf::Window* window, Drawable* drawable)
+void Renderer::onClose() {
+    terrainProgram->deleteProgram();
+    terrainVertShader->deleteShader();
+    terrainFragShader->deleteShader();
+}
+
+
+void Renderer::draw()
 {
-    glClearColor(1.0, 0.0, 0.0, 1.0);
+    // terrainProgram->useProgram();
+    scene->draw();
 }
+

@@ -27,7 +27,11 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include "ResourcePath.h"
+#include <fstream>
+
 #import <Foundation/Foundation.h>
+
+
 
 ////////////////////////////////////////////////////////////
 std::string resourcePath(void)
@@ -49,4 +53,20 @@ std::string resourcePath(void)
     [pool drain];
 
     return rpath;
+}
+
+
+
+bool readFile(std::string aFilename, std::vector<std::string> *vData) {
+    
+    std::ifstream file (resourcePath() + aFilename, std::ios::in);
+    std::string line;
+    if (!file.is_open()) return false;
+    
+    while (!file.eof()) {
+        std::getline(file, line);
+        vData->push_back(line);
+    }
+    
+    return true;
 }

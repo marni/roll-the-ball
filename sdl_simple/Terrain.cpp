@@ -118,6 +118,7 @@ void Terrain::readHeightImage() {
 
 
 void Terrain::drawFrame(ESMatrix *perspective) {
+    
 	ESMatrix modelview;
 
 	// Generate a model view matrix to rotate/translate the cube

@@ -9,6 +9,9 @@
 #ifndef __terrain_demo__application__
 #define __terrain_demo__application__
 
+#include <SFML/System.hpp>
+#include <SFML/Graphics.hpp>
+
 #include "renderer.h"
 
 
@@ -27,9 +30,8 @@ public:
     
 private:
     
-    sf::Window* window;
+    sf::RenderWindow* window;
     Renderer* renderer;
-    Scene* scene;
     
     void initializeWindow();
     

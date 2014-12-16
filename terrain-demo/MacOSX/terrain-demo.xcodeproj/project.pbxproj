@@ -13,6 +13,9 @@
 		6F529A771A3E0C4B003CCA2F /* hgtloader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F529A6F1A3E0C4B003CCA2F /* hgtloader.cpp */; };
 		6F529A781A3E0C4B003CCA2F /* drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F529A711A3E0C4B003CCA2F /* drawable.cpp */; };
 		6F529A791A3E0C4B003CCA2F /* application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F529A731A3E0C4B003CCA2F /* application.cpp */; };
+		6F529A7C1A3E0D83003CCA2F /* glshaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F529A7A1A3E0D83003CCA2F /* glshaders.cpp */; };
+		6F529A7F1A3E1A0F003CCA2F /* terrain.vert in Resources */ = {isa = PBXBuildFile; fileRef = 6F529A7D1A3E1A0F003CCA2F /* terrain.vert */; };
+		6F529A801A3E1A0F003CCA2F /* terrain.frag in Resources */ = {isa = PBXBuildFile; fileRef = 6F529A7E1A3E1A0F003CCA2F /* terrain.frag */; };
 		6F7AEEE01A3DAE4300D62C38 /* N60E010.hgt in Resources */ = {isa = PBXBuildFile; fileRef = 6F7AEEDF1A3DAE4300D62C38 /* N60E010.hgt */; };
 		6F7AEEE51A3DF2A800D62C38 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F7AEEE41A3DF2A800D62C38 /* OpenGL.framework */; };
 		6FB2D3661A3CF42C00DD813B /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6FB2D3651A3CF42C00DD813B /* ResourcePath.mm */; };
@@ -34,6 +37,10 @@
 		6F529A711A3E0C4B003CCA2F /* drawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = drawable.cpp; path = ../../src/drawable.cpp; sourceTree = "<group>"; };
 		6F529A721A3E0C4B003CCA2F /* application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = application.h; path = ../../src/application.h; sourceTree = "<group>"; };
 		6F529A731A3E0C4B003CCA2F /* application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = application.cpp; path = ../../src/application.cpp; sourceTree = "<group>"; };
+		6F529A7A1A3E0D83003CCA2F /* glshaders.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = glshaders.cpp; path = ../../src/glshaders.cpp; sourceTree = "<group>"; };
+		6F529A7B1A3E0D83003CCA2F /* glshaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = glshaders.h; path = ../../src/glshaders.h; sourceTree = "<group>"; };
+		6F529A7D1A3E1A0F003CCA2F /* terrain.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = terrain.vert; path = ../../shaders/terrain.vert; sourceTree = "<group>"; };
+		6F529A7E1A3E1A0F003CCA2F /* terrain.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = terrain.frag; path = ../../shaders/terrain.frag; sourceTree = "<group>"; };
 		6F7AEEDF1A3DAE4300D62C38 /* N60E010.hgt */ = {isa = PBXFileReference; lastKnownFileType = file; name = N60E010.hgt; path = ../../geodata/N60E010.hgt; sourceTree = "<group>"; };
 		6F7AEEE41A3DF2A800D62C38 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		6FB2D3601A3CF42C00DD813B /* terrain-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "terrain-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,18 +66,20 @@
 		6F529A671A3E0C29003CCA2F /* src */ = {
 			isa = PBXGroup;
 			children = (
+				6F529A6A1A3E0C4B003CCA2F /* ResourcePath.h */,
 				6F529A681A3E0C4B003CCA2F /* scene.h */,
 				6F529A691A3E0C4B003CCA2F /* scene.cpp */,
-				6F529A6A1A3E0C4B003CCA2F /* ResourcePath.h */,
 				6F529A6B1A3E0C4B003CCA2F /* renderer.h */,
 				6F529A6C1A3E0C4B003CCA2F /* renderer.cpp */,
-				6F529A6D1A3E0C4B003CCA2F /* main.cpp */,
 				6F529A6E1A3E0C4B003CCA2F /* hgtloader.h */,
 				6F529A6F1A3E0C4B003CCA2F /* hgtloader.cpp */,
 				6F529A701A3E0C4B003CCA2F /* drawable.h */,
 				6F529A711A3E0C4B003CCA2F /* drawable.cpp */,
 				6F529A721A3E0C4B003CCA2F /* application.h */,
 				6F529A731A3E0C4B003CCA2F /* application.cpp */,
+				6F529A6D1A3E0C4B003CCA2F /* main.cpp */,
+				6F529A7A1A3E0D83003CCA2F /* glshaders.cpp */,
+				6F529A7B1A3E0D83003CCA2F /* glshaders.h */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -114,6 +123,8 @@
 		6FB2D36A1A3CF42C00DD813B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6F529A7D1A3E1A0F003CCA2F /* terrain.vert */,
+				6F529A7E1A3E1A0F003CCA2F /* terrain.frag */,
 				6F7AEEDF1A3DAE4300D62C38 /* N60E010.hgt */,
 				6FB2D36D1A3CF42C00DD813B /* nice_music.ogg */,
 				6FB2D36F1A3CF42C00DD813B /* sansation.ttf */,
@@ -179,8 +190,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F529A7F1A3E1A0F003CCA2F /* terrain.vert in Resources */,
 				6FB2D3721A3CF42C00DD813B /* icon.png in Resources */,
 				6FB2D3701A3CF42C00DD813B /* sansation.ttf in Resources */,
+				6F529A801A3E1A0F003CCA2F /* terrain.frag in Resources */,
 				6F7AEEE01A3DAE4300D62C38 /* N60E010.hgt in Resources */,
 				6FB2D36E1A3CF42C00DD813B /* nice_music.ogg in Resources */,
 			);
@@ -216,6 +229,7 @@
 				6F529A761A3E0C4B003CCA2F /* main.cpp in Sources */,
 				6F529A791A3E0C4B003CCA2F /* application.cpp in Sources */,
 				6FB2D3661A3CF42C00DD813B /* ResourcePath.mm in Sources */,
+				6F529A7C1A3E0D83003CCA2F /* glshaders.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
