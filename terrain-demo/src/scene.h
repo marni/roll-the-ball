@@ -13,7 +13,7 @@
 #include "hgtloader.h"
 
 #include <OpenGL/gl3.h>
-
+#include <glm/glm.hpp>
 
 class Scene : public Drawable
 {
@@ -28,6 +28,9 @@ public:
     
 private:
     
+    glm::vec3* prepareVertexData(int* heightData, int rowsCount, int colsCount);
+    void prepareNormals(int* heightData, glm::vec3* vertexData, int rowsCount, int colsCount);
+    
     const HGT_Array* heightdata;
     
     int indexCount;
@@ -35,6 +38,8 @@ private:
     
     GLuint vaoId;
 
+    
+    
 };
 
 #endif /* defined(__terrain_demo__scene__) */

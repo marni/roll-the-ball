@@ -9,13 +9,6 @@
 #include "scene.h"
 #include "hgtloader.h"
 
-#include <glm/glm.hpp>
-
-#include <vector>
-
-using std::vector;
-
-
 
 
 Scene::Scene()
@@ -44,19 +37,39 @@ void Scene::onInit()
         100, 100, 300, 100,
         100, 100, 100, 100 };
     
+
+    glGenVertexArrays(1, &vaoId);
+    glBindVertexArray(vaoId);
+
+    glm::vec3* vertexData = prepareVertexData(&data[0][0], rowsCount, colsCount);
+    prepareNormals(&data[0][0], vertexData, rowsCount, colsCount);
+    
+}
+
+
+void Scene::prepareNormals(int* heightData, glm::vec3* vertexData, int rowsCount, int colsCount) {
+    
+}
+
+
+
+// returns the array to vertices
+glm::vec3* Scene::prepareVertexData(int* data, int rowsCount, int colsCount) {
+
     // container with vertex data
-    glm::vec3 vertexData[rowsCount][colsCount];
+    glm::vec3* vertexData = new glm::vec3[rowsCount * colsCount];
     
     for (int i = 0; i < rowsCount; i++) {
         for (int j = 0; j < colsCount; j++) {
             float scaleC = float(j) / float(colsCount - 1);
             float scaleR = float(i) / float(rowsCount - 1);
-            float vertexHeight = float(data[i][j]) / 300.0f; // normalized for the dummy data
-            vertexData[i][j] = glm::vec3(-0.5f + scaleC, vertexHeight - 0.5f, -0.5f + scaleR);
+            float vertexHeight = float(data[i*rowsCount + j]) / 300.0f; // normalized for the dummy data
+            vertexData[i*rowsCount + j] = glm::vec3(-0.5f + scaleC, vertexHeight - 0.5f, -0.5f + scaleR);
         }
     }
     
     // container with indexes
+    
     this->indexCount = (rowsCount - 1) * colsCount * 2 + rowsCount - 1;
     GLuint vertexIndices[indexCount];
     this->PrimitiveRestartIndex = rowsCount * colsCount;
@@ -72,10 +85,6 @@ void Scene::onInit()
         // Restart triangle strips
         vertexIndices[n++] = PrimitiveRestartIndex;
     }
-    
-    
-    glGenVertexArrays(1, &vaoId);
-    glBindVertexArray(vaoId);
     
     // This will identify our GPU buffers
     // 0 - vertex buffer
@@ -96,7 +105,7 @@ void Scene::onInit()
     
     glEnable(GL_PRIMITIVE_RESTART);
     glPrimitiveRestartIndex(PrimitiveRestartIndex);
-
+    return vertexData;
 }
 
 
