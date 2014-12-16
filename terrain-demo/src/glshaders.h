@@ -9,6 +9,7 @@
 #ifndef __terrain_demo__glshaders__
 #define __terrain_demo__glshaders__
 
+#define GLM_FORCE_RADIANS
 #include <OpenGl/gl3.h>
 #include <glm/glm.hpp>
 

@@ -27,7 +27,7 @@ GLShader::GLShader() {
 }
 
 
-bool GLShader::loadFromFile(std::string filename, int aType){
+bool GLShader::loadFromFile(std::string filename, int aType) {
     
     // vector of strings of the program Text
     std::vector<std::string> inputText;
@@ -110,8 +110,23 @@ bool GLProgram::addShader(GLShader *aShader) {
 bool GLProgram::linkShaders()
 {
     glLinkProgram(programId);
-    int status;
+    GLint status;
     glGetProgramiv(programId, GL_LINK_STATUS, &status);
+    if (status == GL_FALSE) {
+        GLint maxLength = 0;
+        glGetProgramiv(programId, GL_INFO_LOG_LENGTH, &maxLength);
+        
+        //The maxLength includes the NULL character
+        std::vector<GLchar> infoLog(maxLength);
+        glGetProgramInfoLog(programId, maxLength, &maxLength, &infoLog[0]);
+
+        //std::cout << infoLog. << std::endl;
+        /* Print vector to console */
+        std::copy(infoLog.begin(), infoLog.end(), std::ostream_iterator<char>(std::cout, ""));
+        isLinked = false;
+        return false;
+    }
+    
     isLinked = true;
     return status == GL_TRUE;
 }

@@ -11,6 +11,7 @@
 
 #include "ResourcePath.h"
 
+#define GLM_FORCE_RADIANS
 #include <OpenGL/gl3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -27,6 +28,7 @@ Renderer::Renderer()
     camera = new Camera();
     
     terrainVertShader = new GLShader();
+    terrainGeomShader = new GLShader();
     terrainFragShader = new GLShader();
     terrainProgram = new GLProgram();
 }
@@ -36,6 +38,7 @@ Renderer::~Renderer()
 {
     delete terrainVertShader;
     delete terrainFragShader;
+    delete terrainGeomShader;
     delete terrainProgram;
 
     delete camera;
@@ -50,10 +53,14 @@ void Renderer::onInit()
     if (!terrainVertShader->loadFromFile("terrain.vert", GL_VERTEX_SHADER)) {
         std::cerr << "[ERROR][Renderer] Failed to load terrain.vert shader." << std::endl;
     }
+    if (!terrainGeomShader->loadFromFile("terrain.geom", GL_GEOMETRY_SHADER)) {
+        std::cerr << "[ERROR][Renderer] Failed to load terrain.geom shader." << std::endl;
+    }
     if (!terrainFragShader->loadFromFile("terrain.frag", GL_FRAGMENT_SHADER)) {
         std::cerr << "[ERROR][Renderer] Failed to load terrain.frag shader." << std::endl;
     }
     terrainProgram->addShader(terrainVertShader);
+    terrainProgram->addShader(terrainGeomShader);
     terrainProgram->addShader(terrainFragShader);
     
     if (!terrainProgram->linkShaders()) {
@@ -86,7 +93,7 @@ void Renderer::draw()
 {
     // terrainProgram->useProgram();
     glm::mat4 tmp = modelMatrix;
-    tmp = glm::rotate(tmp, 0.1f, glm::vec3(0.0, 1.0, 0.0));
+    tmp = glm::rotate(tmp, 0.005f, glm::vec3(0.0, 1.0, 0.0));
     modelMatrix = tmp;
     terrainProgram->setUniform("modelMatrix", tmp);
     scene->draw();

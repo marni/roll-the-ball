@@ -9,6 +9,7 @@
 #ifndef __terrain_demo__camera__
 #define __terrain_demo__camera__
 
+#define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
 
 

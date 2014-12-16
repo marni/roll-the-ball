@@ -40,6 +40,7 @@ private:
     
     GLProgram* terrainProgram;
     GLShader* terrainVertShader;
+    GLShader* terrainGeomShader;
     GLShader* terrainFragShader;
 
 };

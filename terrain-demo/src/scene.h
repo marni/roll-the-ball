@@ -12,8 +12,12 @@
 #include "drawable.h"
 #include "hgtloader.h"
 
+#define GLM_FORCE_RADIANS
+
 #include <OpenGL/gl3.h>
 #include <glm/glm.hpp>
+
+
 
 class Scene : public Drawable
 {
@@ -28,8 +32,8 @@ public:
     
 private:
     
-    glm::vec3* prepareVertexData(int* heightData, int rowsCount, int colsCount);
-    void prepareNormals(int* heightData, glm::vec3* vertexData, int rowsCount, int colsCount);
+    void prepareVertexData(int* heightData, int rowsCount, int colsCount);
+    glm::vec3* prepareNormals(glm::vec3* vertexData, int rowsCount, int colsCount);
     
     const HGT_Array* heightdata;
     
@@ -38,8 +42,6 @@ private:
     
     GLuint vaoId;
 
-    
-    
 };
 
 #endif /* defined(__terrain_demo__scene__) */

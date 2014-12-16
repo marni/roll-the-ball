@@ -23,6 +23,8 @@
 		6FB2D3701A3CF42C00DD813B /* sansation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FB2D36F1A3CF42C00DD813B /* sansation.ttf */; };
 		6FB2D3721A3CF42C00DD813B /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FB2D3711A3CF42C00DD813B /* icon.png */; };
 		6FD04B6E1A40A8D900E97935 /* camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FD04B6C1A40A8D900E97935 /* camera.cpp */; };
+		6FD04B701A40E0D900E97935 /* terrain.geom in Resources */ = {isa = PBXBuildFile; fileRef = 6FD04B6F1A40E0D900E97935 /* terrain.geom */; };
+		6FD04B731A40EEFD00E97935 /* vbo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FD04B711A40EEFD00E97935 /* vbo.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,9 @@
 		6FB2D3711A3CF42C00DD813B /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		6FD04B6C1A40A8D900E97935 /* camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = camera.cpp; path = ../../src/camera.cpp; sourceTree = "<group>"; };
 		6FD04B6D1A40A8D900E97935 /* camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = camera.h; path = ../../src/camera.h; sourceTree = "<group>"; };
+		6FD04B6F1A40E0D900E97935 /* terrain.geom */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; lineEnding = 2; name = terrain.geom; path = ../../shaders/terrain.geom; sourceTree = "<group>"; };
+		6FD04B711A40EEFD00E97935 /* vbo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = vbo.cpp; path = ../../src/vbo.cpp; sourceTree = "<group>"; };
+		6FD04B721A40EEFD00E97935 /* vbo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vbo.h; path = ../../src/vbo.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +90,8 @@
 				6F529A7B1A3E0D83003CCA2F /* glshaders.h */,
 				6FD04B6C1A40A8D900E97935 /* camera.cpp */,
 				6FD04B6D1A40A8D900E97935 /* camera.h */,
+				6FD04B711A40EEFD00E97935 /* vbo.cpp */,
+				6FD04B721A40EEFD00E97935 /* vbo.h */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -130,6 +137,7 @@
 			children = (
 				6F529A7D1A3E1A0F003CCA2F /* terrain.vert */,
 				6F529A7E1A3E1A0F003CCA2F /* terrain.frag */,
+				6FD04B6F1A40E0D900E97935 /* terrain.geom */,
 				6F7AEEDF1A3DAE4300D62C38 /* N60E010.hgt */,
 				6FB2D36D1A3CF42C00DD813B /* nice_music.ogg */,
 				6FB2D36F1A3CF42C00DD813B /* sansation.ttf */,
@@ -201,6 +209,7 @@
 				6F529A801A3E1A0F003CCA2F /* terrain.frag in Resources */,
 				6F7AEEE01A3DAE4300D62C38 /* N60E010.hgt in Resources */,
 				6FB2D36E1A3CF42C00DD813B /* nice_music.ogg in Resources */,
+				6FD04B701A40E0D900E97935 /* terrain.geom in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F529A771A3E0C4B003CCA2F /* hgtloader.cpp in Sources */,
+				6FD04B731A40EEFD00E97935 /* vbo.cpp in Sources */,
 				6F529A741A3E0C4B003CCA2F /* scene.cpp in Sources */,
 				6F529A751A3E0C4B003CCA2F /* renderer.cpp in Sources */,
 				6F529A781A3E0C4B003CCA2F /* drawable.cpp in Sources */,

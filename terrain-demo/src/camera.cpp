@@ -13,22 +13,27 @@
 
 
 Camera::Camera() {
+    // defaults
     position = glm::vec3(0.0, 0.0, 0.0);
     upVector = glm::vec3(0.0, 1.0, 0.0);
     viewVector = glm::vec3(0.0, 0.0, -1.0);
 }
 
+
 void Camera::setPosition(glm::vec3 aPosition) {
     position = aPosition;
 }
+
 
 void Camera::setViewVector(glm::vec3 aVector) {
     viewVector = aVector;
 }
 
+
 void Camera::setUpVector(glm::vec3 aVector) {
     upVector = aVector;
 }
+
 
 glm::mat4 Camera::getViewMatrix() {
     return glm::lookAt(position, viewVector, upVector);
