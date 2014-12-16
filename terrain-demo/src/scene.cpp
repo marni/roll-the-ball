@@ -39,10 +39,10 @@ void Scene::onInit()
     const int colsCount = 4;
     
     int data[rowsCount][colsCount] = {
-        10, 100, 100, 150,
-        10, 100, 50,  200,
-        10, 150, 300, 150,
-        10, 100, 100, 100 };
+        100, 100, 100, 100,
+        200, 100, 100, 100,
+        100, 100, 300, 100,
+        100, 100, 100, 100 };
     
     // container with vertex data
     glm::vec3 vertexData[rowsCount][colsCount];
@@ -52,7 +52,7 @@ void Scene::onInit()
             float scaleC = float(j) / float(colsCount - 1);
             float scaleR = float(i) / float(rowsCount - 1);
             float vertexHeight = float(data[i][j]) / 300.0f; // normalized for the dummy data
-            vertexData[i][j] = glm::vec3(-0.5f + scaleC, vertexHeight, -0.5f + scaleR);
+            vertexData[i][j] = glm::vec3(-0.5f + scaleC, vertexHeight - 0.5f, -0.5f + scaleR);
         }
     }
     

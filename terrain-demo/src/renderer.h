@@ -11,6 +11,7 @@
 
 #include "drawable.h"
 #include "scene.h"
+#include "camera.h"
 #include "glshaders.h"
 
 
@@ -31,6 +32,11 @@ public:
 private:
     
     Scene* scene;
+    Camera* camera;
+    
+    glm::mat4 modelMatrix;
+    glm::mat4 viewMatrix;
+    glm::mat4 projectionMatrix;
     
     GLProgram* terrainProgram;
     GLShader* terrainVertShader;

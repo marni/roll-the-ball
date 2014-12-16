@@ -13,6 +13,7 @@
 
 #include <OpenGL/gl3.h>
 #include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 #include <iostream>
 #include <vector>
@@ -23,6 +24,8 @@ using std::vector;
 
 Renderer::Renderer()
 {
+    camera = new Camera();
+    
     terrainVertShader = new GLShader();
     terrainFragShader = new GLShader();
     terrainProgram = new GLProgram();
@@ -34,7 +37,8 @@ Renderer::~Renderer()
     delete terrainVertShader;
     delete terrainFragShader;
     delete terrainProgram;
-    
+
+    delete camera;
     delete scene;
 }
 
@@ -59,6 +63,15 @@ void Renderer::onInit()
     
     // create the scene
     scene->onInit();
+    
+    modelMatrix = glm::mat4(1.0);
+    //camera->setPosition(glm::vec3(0.0, 1.0, 1.0));
+    viewMatrix = camera->getViewMatrix();
+    projectionMatrix = glm::mat4(1.0);
+    
+    terrainProgram->setUniform("modelMatrix", modelMatrix);
+    terrainProgram->setUniform("viewMatrix", viewMatrix);
+    terrainProgram->setUniform("projectionMatrix", projectionMatrix);
 }
 
 
@@ -72,6 +85,10 @@ void Renderer::onClose() {
 void Renderer::draw()
 {
     // terrainProgram->useProgram();
+    glm::mat4 tmp = modelMatrix;
+    tmp = glm::rotate(tmp, 0.1f, glm::vec3(0.0, 1.0, 0.0));
+    modelMatrix = tmp;
+    terrainProgram->setUniform("modelMatrix", tmp);
     scene->draw();
 }
 

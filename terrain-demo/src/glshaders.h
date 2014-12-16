@@ -10,6 +10,7 @@
 #define __terrain_demo__glshaders__
 
 #include <OpenGl/gl3.h>
+#include <glm/glm.hpp>
 
 #include <string>
 #include <vector>
@@ -40,6 +41,12 @@ public:
     
     GLuint programId;
     bool isLinked;
+    
+    
+    // Uniforms convenience methods
+    void setUniform(std::string, glm::mat4*, int counter = 1);
+    void setUniform(std::string, const glm::mat4);
+
 };
 
 #endif /* defined(__terrain_demo__glshaders__) */
