@@ -35,7 +35,7 @@ private:
     void prepareVertexData(int* heightData, int rowsCount, int colsCount);
     glm::vec3* prepareNormals(glm::vec3* vertexData, int rowsCount, int colsCount);
     
-    const HGT_Array* heightdata;
+    int* heightdata;
     
     int indexCount;
     int PrimitiveRestartIndex;

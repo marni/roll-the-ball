@@ -25,25 +25,32 @@ Scene::~Scene()
 
 void Scene::onInit()
 {
-    heightdata = loadHeightArray("N60E010.hgt");
+    /*
+    
+     heightdata = loadHeightArray("N60E010.hgt");
+     const int rowsCount = SRTM_VERSION;
+     const int colsCount = SRTM_VERSION;
+     
+     */
     
     // let us ignore the height data for a bit, and use hardcoded
     // 4x4 lattice of height points as defined below:
     const int rowsCount = 4;
     const int colsCount = 4;
     
-    int data[rowsCount][colsCount] = {
+    int data[rowsCount*colsCount] = {
         100, 100, 100, 100,
         200, 100, 100, 100,
         100, 100, 300, 100,
         100, 100, 100, 100 };
     
-
+    //
+    
     glGenVertexArrays(1, &vaoId);
     glBindVertexArray(vaoId);
     
-    prepareVertexData(&data[0][0], rowsCount, colsCount);
-    
+    prepareVertexData(&data[0], rowsCount, colsCount);
+    //prepareVertexData(heightdata, rowsCount, colsCount);
 }
 
 
@@ -67,7 +74,7 @@ void Scene::prepareVertexData(int* data, int rowsCount, int colsCount) {
     // container with indexes
     
     this->indexCount = (rowsCount - 1) * colsCount * 2 + rowsCount - 1;
-    GLuint vertexIndices[indexCount];
+    GLuint* vertexIndices = new GLuint[indexCount];
     this->PrimitiveRestartIndex = rowsCount * colsCount;
     int n = 0;
     for (int i = 0; i < rowsCount - 1; i++) {
@@ -112,13 +119,14 @@ void Scene::prepareVertexData(int* data, int rowsCount, int colsCount) {
     GLuint indexBuffer;
     glGenBuffers(1, &indexBuffer);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(vertexIndices), vertexIndices, GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexCount * sizeof(GLuint), vertexIndices, GL_STATIC_DRAW);
     
     glEnable(GL_PRIMITIVE_RESTART);
     glPrimitiveRestartIndex(PrimitiveRestartIndex);
     
     // dispose of local data
     delete vertexData;
+    delete vertexIndices;
     delete vertexNormals;
 }
 

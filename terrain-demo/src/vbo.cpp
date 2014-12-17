@@ -34,11 +34,13 @@ void VBO::addData(void* dataPtr, GLuint dataSize) {
 
 
 void VBO::copyToGPU(GLuint usageHint) {
-    unsigned char raw[data.size()];
+    unsigned char* raw = new unsigned char[data.size()];
     for (int i=0; i < data.size(); i++) {
         raw[i] = data[i];
     }
     glBufferData(bufferType, data.size(), raw, usageHint);
+    
     data.clear();
+    delete raw;
 }
 

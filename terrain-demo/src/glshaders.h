@@ -47,6 +47,10 @@ public:
     // Uniforms convenience methods
     void setUniform(std::string, glm::mat4*, int counter = 1);
     void setUniform(std::string, const glm::mat4);
+    
+    void setUniform(std::string, glm::vec3*, int counter = 1);
+    void setUniform(std::string, const glm::vec3);
+
 
 };
 

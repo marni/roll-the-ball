@@ -21,10 +21,7 @@
 #define SRTM_VERSION 3601
 
 
-typedef struct { int height[SRTM_VERSION][SRTM_VERSION]; } HGT_Array;
-
-
-const HGT_Array* loadHeightArray(std::string hgt_filename);
+int* loadHeightArray(std::string hgt_filename);
 
 
 

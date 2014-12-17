@@ -153,4 +153,15 @@ void GLProgram::setUniform(std::string aName, const glm::mat4 aMatrix)
 }
 
 
+void GLProgram::setUniform(std::string aName, glm::vec3* data, int counter)
+{
+    const int loc = glGetUniformLocation(programId, aName.c_str());
+    glUniform3fv(loc, counter, (GLfloat*)data);
+}
+
+void GLProgram::setUniform(std::string aName, const glm::vec3 aMatrix)
+{
+    const int loc = glGetUniformLocation(programId, aName.c_str());
+    glUniform3fv(loc, 1, (GLfloat*)&aMatrix);
+}
 

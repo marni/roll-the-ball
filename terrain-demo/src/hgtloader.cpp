@@ -13,10 +13,10 @@
 #include <fstream>
 
 
-const HGT_Array* loadHeightArray(std::string hgtFilename)
+int* loadHeightArray(std::string hgtFilename)
 {
 
-    HGT_Array* heightdata = new HGT_Array();
+    int* heightdata = new int[SRTM_VERSION * SRTM_VERSION];
 
     std::ifstream::pos_type size;
     char memblock[2];
@@ -31,7 +31,7 @@ const HGT_Array* loadHeightArray(std::string hgtFilename)
         for ( int r = 0; r < SRTM_VERSION ; r++ ) {
             for ( int c = 0 ; c < SRTM_VERSION; c++ ) {
                 int value = ((((unsigned char)memblock[0]) << 8) | (unsigned char)memblock[1]);
-                heightdata->height[r][c] = value;
+                heightdata[r * SRTM_VERSION + c] = value;
                 file.read (memblock, 2);
             }
         }

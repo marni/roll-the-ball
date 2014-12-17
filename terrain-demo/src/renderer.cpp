@@ -79,6 +79,13 @@ void Renderer::onInit()
     terrainProgram->setUniform("modelMatrix", modelMatrix);
     terrainProgram->setUniform("viewMatrix", viewMatrix);
     terrainProgram->setUniform("projectionMatrix", projectionMatrix);
+    
+    terrainProgram->setUniform("colorVertex", glm::vec3(0.0, 0.0, 1.0));
+    terrainProgram->setUniform("colorVertexNormal", glm::vec3(1.0, 0.0, 0.0));
+    terrainProgram->setUniform("colorFaceNormal", glm::vec3(1.0, 1.0, 0.0));
+    
+    //glEnable(GL_DEPTH_TEST);
+    //glCullFace(GL_BACK);
 }
 
 
