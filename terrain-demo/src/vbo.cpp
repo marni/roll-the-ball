@@ -28,7 +28,7 @@ void VBO::bind(GLuint aType) {
 
 
 void VBO::addData(void* dataPtr, GLuint dataSize) {
-    data.insert(data.end(), (unsigned char*)dataPtr, ((unsigned char*)dataPtr) + dataSize);
+    data.insert(data.end(), (unsigned char*) dataPtr, ((unsigned char*) dataPtr) + dataSize);
     size += dataSize;
 }
 

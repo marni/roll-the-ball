@@ -4,7 +4,6 @@ uniform mat4 modelMatrix;
 uniform mat4 viewMatrix;
 uniform mat4 projectionMatrix;
 
-uniform vec3 colorVertex;
 uniform vec3 colorVertexNormal;
 uniform vec3 colorFaceNormal;
 
@@ -20,6 +19,7 @@ out vec4 vertexColor;
 in struct Vertex
 {
     vec4 normal;
+    vec4 color;
 } vertex[];
 
 
@@ -38,7 +38,7 @@ void main()
     for (i = 0; i < gl_in.length(); i++)
     {
         gl_Position = projectionMatrix * viewMatrix * modelMatrix * gl_in[i].gl_Position;
-        vertexColor = vec4(colorVertex, 1.0);
+        vertexColor = vertex[i].color;
         EmitVertex();
     }
     EndPrimitive();

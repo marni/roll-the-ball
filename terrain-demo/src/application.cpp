@@ -52,6 +52,13 @@ void Application::startMainLoop()
         return EXIT_FAILURE;
     }
     
+    // Menu
+    std::cout << std::endl << "keys binding: " << std::endl;
+    std::cout << "M -- toggles wireframe and color view" << std::endl;
+    std::cout << "F -- prints out the current FPS" << std::endl;
+    std::cout << std::endl;
+    
+    
     // Play the music
     //music.play();
     
@@ -60,6 +67,11 @@ void Application::startMainLoop()
     
     glClearColor(0.65f, 0.65f, 0.65f, 0.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
+    
+    bool isDrawWireframe = false;
     while (isAppRunning) {        
         // Process events
         sf::Event event;
@@ -67,9 +79,17 @@ void Application::startMainLoop()
             // Close window: exit
             if (event.type == sf::Event::Closed) {
                 isAppRunning = false;
-            } else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
-                // Escape pressed: exit
-                isAppRunning = false;
+            } else if (event.type == sf::Event::KeyPressed) {
+                if (event.key.code == sf::Keyboard::Escape) {
+                        // Escape pressed: exit
+                        isAppRunning = false;
+                    
+                } else if (event.key.code == sf::Keyboard::M) {
+                    // toggle wireframe/color view
+                    isDrawWireframe = !isDrawWireframe;
+                } else if (event.key.code == sf::Keyboard::F) {
+                    std::cout << "FPS: " << round(renderer->FPS) << std::endl;
+                }
             } else if (event.type == sf::Event::Resized) {
                 // adjust the viewport when the window is resized
                 glViewport(0, 0, event.size.width, event.size.height);
@@ -80,7 +100,7 @@ void Application::startMainLoop()
         glClear(GL_COLOR_BUFFER_BIT);
         
         // RENDER THE SCENE
-        renderer->draw();
+        renderer->draw(isDrawWireframe);
         
         // swap the buffers
         window->display();
@@ -101,7 +121,7 @@ void Application::initializeWindow()
     settings.minorVersion = 2;
     
     // Create the main window
-    window = new sf::RenderWindow(sf::VideoMode(800, 600, 24), "Terrain Demo", sf::Style::Titlebar | sf::Style::Close, settings);
+    window = new sf::RenderWindow(sf::VideoMode(800, 600, 24), "Terrain Demo", sf::Style::Default, settings);
     window->setVerticalSyncEnabled(true);
     window->setActive();
     

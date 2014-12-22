@@ -14,6 +14,7 @@
 #include "camera.h"
 #include "glshaders.h"
 
+#include <chrono>
 
 
 class Renderer
@@ -27,7 +28,10 @@ public:
     void onInit();
     void onClose();
     
-    void draw();
+    void draw(bool isDrawWireframe = true);
+    
+    float FPS; // the actual current value of FPS
+    
     
 private:
     
@@ -38,10 +42,23 @@ private:
     glm::mat4 viewMatrix;
     glm::mat4 projectionMatrix;
     
-    GLProgram* terrainProgram;
-    GLShader* terrainVertShader;
-    GLShader* terrainGeomShader;
-    GLShader* terrainFragShader;
+    GLProgram* wireframeProgram;
+    void initWireframeProgram();
+
+    GLProgram* colorLightProgram;
+    void initColorLightProgram();
+    
+    GLShader* terrainWireframeVertShader;
+    GLShader* terrainWireframeGeomShader;
+    GLShader* terrainWireframeFragShader;
+    
+    GLShader* terrainColorVertShader;
+    GLShader* terrainColorFragShader;
+
+    
+    
+    unsigned long FPS_counter;
+    std::chrono::time_point<std::chrono::high_resolution_clock> FPS_startTime;
 
 };
 

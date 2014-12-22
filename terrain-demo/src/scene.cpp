@@ -25,13 +25,13 @@ Scene::~Scene()
 
 void Scene::onInit()
 {
-    /*
+    /*/
     
      heightdata = loadHeightArray("N60E010.hgt");
      const int rowsCount = SRTM_VERSION;
      const int colsCount = SRTM_VERSION;
      
-     */
+    */
     
     // let us ignore the height data for a bit, and use hardcoded
     // 4x4 lattice of height points as defined below:
@@ -44,10 +44,10 @@ void Scene::onInit()
         100, 100, 300, 100,
         100, 100, 100, 100 };
     
-    //
+    //*/
     
-    glGenVertexArrays(1, &vaoId);
-    glBindVertexArray(vaoId);
+    glGenVertexArrays(1, &wireframeVAO);
+    glBindVertexArray(wireframeVAO);
     
     prepareVertexData(&data[0], rowsCount, colsCount);
     //prepareVertexData(heightdata, rowsCount, colsCount);
@@ -96,25 +96,34 @@ void Scene::prepareVertexData(int* data, int rowsCount, int colsCount) {
     
     VBO vertexVBO;
     vertexVBO.create();
+    glm::vec4 BLUE_COLOR(0.0, 0.0, 1.0, 1.0);
     
     for (int i = 0; i < rowsCount; i++) {
         for (int j = 0; j < colsCount; j++) {
             int index = i*rowsCount + j;
             vertexVBO.addData(&vertexData[index], sizeof(glm::vec3));       // vertex
-            vertexVBO.addData(&vertexNormals[index], sizeof(glm::vec3));    // normals
+            vertexVBO.addData(&vertexNormals[index], sizeof(glm::vec3));    // normal
+            vertexVBO.addData(&BLUE_COLOR, sizeof(glm::vec4));              // color
         }
     }
     
     vertexVBO.bind();
     vertexVBO.copyToGPU();
     
+    // how much attributes data do we store
+    const GLuint stride = 2*sizeof(glm::vec3) + sizeof(glm::vec4);
+    
     // Vertex positions
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 2*sizeof(glm::vec3), 0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, stride, (void*)0);
     
     // Normal vectors
     glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 2*sizeof(glm::vec3), (void*)(sizeof(glm::vec3)));
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, stride, (void*)(sizeof(glm::vec3)));
+
+    // Vertex color
+    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, stride, (void*)(2 * sizeof(glm::vec3)));
     
     GLuint indexBuffer;
     glGenBuffers(1, &indexBuffer);
@@ -202,7 +211,7 @@ glm::vec3* Scene::prepareNormals(glm::vec3* vertexData, int rowsCount, int colsC
 
 
 void Scene::draw() {
-    glBindVertexArray(vaoId);
+    glBindVertexArray(wireframeVAO);
     glDrawElements(GL_TRIANGLE_STRIP, indexCount, GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
 }

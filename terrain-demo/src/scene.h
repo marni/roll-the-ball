@@ -40,7 +40,7 @@ private:
     int indexCount;
     int PrimitiveRestartIndex;
     
-    GLuint vaoId;
+    GLuint wireframeVAO;
 
 };
 
