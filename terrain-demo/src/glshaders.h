@@ -51,6 +51,8 @@ public:
     void setUniform(std::string, glm::vec3*, int counter = 1);
     void setUniform(std::string, const glm::vec3);
 
+    void setUniform(std::string, glm::vec4*, int counter = 1);
+    void setUniform(std::string, const glm::vec4);
 
 };
 

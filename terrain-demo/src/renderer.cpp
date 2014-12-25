@@ -123,6 +123,8 @@ void Renderer::initColorLightProgram() {
     colorLightProgram->setUniform("modelMatrix", modelMatrix);
     colorLightProgram->setUniform("viewMatrix", viewMatrix);
     colorLightProgram->setUniform("projectionMatrix", projectionMatrix);
+    
+    colorLightProgram->setUniform("lightPositionWorldspace", glm::vec4(1.0, 3.0, 1.0, 1.0));
 }
 
 
